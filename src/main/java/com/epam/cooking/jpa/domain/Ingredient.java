@@ -69,7 +69,7 @@ public class Ingredient {
 	@Override
 	public String toString() {
 		return "Ingredient [id=" + id + ", name=" + name + ", description="
-				+ description + ", price=" + price + ", author=" + author + "]";
+				 + ", price=" + price + ", author=" + author + "]";
 	}
 
 	public String getAuthor() {

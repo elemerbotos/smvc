@@ -25,8 +25,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.epam.cooking.jpa.domain.Component;
 import com.epam.cooking.jpa.domain.Ingredient;
 import com.epam.cooking.jpa.domain.Recipe;
+import com.epam.cooking.jpa.domain.User;
 import com.epam.cooking.jpa.service.RecipesIngredientsService;
-import com.epam.cooking.json.ComponentMapper;
+import com.epam.cooking.json.SimpleComponent;
+import com.epam.cooking.json.SimpleUser;
 
 /**
  * Handles requests for the application home page.
@@ -127,13 +129,13 @@ public class HomeController {
 //		}
 //		
 //		ObjectMapper mapper = new ObjectMapper();
-		List<Component> ingredients = recipeService.getRecipe((long) 2).getComponents();
-		List<ComponentMapper> components = new ArrayList<>();
-		for(Component component : ingredients) {
-			components.add(dozerMapper.map(component, ComponentMapper.class));
+		List<User> users = recipeService.getUsers();
+		List<SimpleUser> simpleUsers = new ArrayList<>();
+		for(User user : users) {
+			simpleUsers.add(dozerMapper.map(user, SimpleUser.class));
 		}
 		
 		ObjectMapper mapper = new ObjectMapper();
-		return mapper.writeValueAsString(components);
+		return mapper.writeValueAsString(simpleUsers);
 	}
 }
