@@ -1,12 +1,15 @@
 package com.epam.cooking.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.dozer.DozerBeanMapper;
+import org.dozer.Mapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +22,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.epam.cooking.jpa.domain.Component;
 import com.epam.cooking.jpa.domain.Ingredient;
 import com.epam.cooking.jpa.domain.Recipe;
 import com.epam.cooking.jpa.service.RecipesIngredientsService;
+import com.epam.cooking.json.ComponentMapper;
 
 /**
  * Handles requests for the application home page.
@@ -33,6 +38,8 @@ public class HomeController {
 
 	private static final Logger LOGGER = LoggerFactory
 			.getLogger(HomeController.class);
+	
+	private static final Mapper dozerMapper = new DozerBeanMapper();
 
 	@Autowired
 	private RecipesIngredientsService recipeService;
@@ -109,4 +116,24 @@ public class HomeController {
 		return "ingredients";
 	}
 	
+	@RequestMapping(value = "/usersAJAX", method = RequestMethod.GET, produces = "application/json")
+	@ResponseBody
+	public String usersAJAX(Locale locale, Model model) throws JsonGenerationException, JsonMappingException, IOException {
+//		List<User> users = recipeService.getUsers();
+//		List<UserMapper> usersJSON = new ArrayList<>();
+//		
+//		for(User user : users) {
+//			usersJSON.add(mapper.map(user, UserMapper.class));
+//		}
+//		
+//		ObjectMapper mapper = new ObjectMapper();
+		List<Component> ingredients = recipeService.getRecipe((long) 2).getComponents();
+		List<ComponentMapper> components = new ArrayList<>();
+		for(Component component : ingredients) {
+			components.add(dozerMapper.map(component, ComponentMapper.class));
+		}
+		
+		ObjectMapper mapper = new ObjectMapper();
+		return mapper.writeValueAsString(components);
+	}
 }

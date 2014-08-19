@@ -25,19 +25,19 @@
 				<div class="page-header"></div>
 				<div class="row">
 
-					<div class="col-md-2, menu-items-center">
+					<div class="col-md-2">
 						<a href="/recipes">Recipes</a>
 					</div>
-					<div class="col-md-2, menu-items-center">
+					<div class="col-md-3">
 						<a href="/ingredients">Ingredients</a>
 					</div>
-					<div class="col-md-2, menu-items-center">
+					<div class="col-md-2">
 						<a href="/users">Users</a>
 					</div>
-					<div class="col-md-2, menu-items-center">
+					<div class="col-md-3">
 						<a href="/help">Help</a>
 					</div>
-					<div class="col-md-2, menu-items-center">
+					<div class="col-md-2">
 						<a href="/">Home</a>
 					</div>
 				</div>

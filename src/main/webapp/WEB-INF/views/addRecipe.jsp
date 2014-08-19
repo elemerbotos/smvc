@@ -19,13 +19,14 @@
 		<div class="col-md-8">
 			<div class="page-header">
 				<h1>
-					New recipe <a href="/j_spring_security_logout">
+					New Ingredient <a href="/j_spring_security_logout">
 						<button type="submit" class="btn btn-default">
 							<i class="glyphicon glyphicon-log-out"></i> Log out
 						</button>
 					</a>
 				</h1>
-
+	
+				<div class="page-header"></div>
 				<div class="row">
 
 					<div class="col-md-2">

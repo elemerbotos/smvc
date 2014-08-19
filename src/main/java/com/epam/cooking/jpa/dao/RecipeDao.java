@@ -8,7 +8,7 @@ public interface RecipeDao {
 
 	void addRecipe(Recipe recipe);
 	
-	Recipe getRecipe(int id);
+	Recipe getRecipe(Long id);
 	
 	List<Recipe> getRecipes();
 

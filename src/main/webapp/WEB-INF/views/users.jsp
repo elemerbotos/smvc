@@ -2,7 +2,7 @@
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<html ng-app="ingredientApp">
+<html ng-app="userApp">
 <head>
 <title>Home</title>
 <link rel="stylesheet"
@@ -16,7 +16,7 @@
 		<div class="col-md-2"></div>
 		<div class="col-md-8">
 			<div class="page-header">
-				<h1>Ingredients <a href="/j_spring_security_logout">
+				<h1>Users <a href="/j_spring_security_logout">
 						<button type="submit" class="btn btn-default">
 							<i class="glyphicon glyphicon-log-out"></i> Log out
 						</button>
@@ -45,7 +45,7 @@
 
 			<div class="row">
 				<div class="col-md-9">
-					<div class="container-fluid" ng-controller="ingredientCtrl">
+					<div class="container-fluid" ng-controller="userCtrl">
 					
 						<div class="row">
 							<div class="col-md-2">
@@ -60,7 +60,7 @@
 								<!--Body content-->
 								<br />
 								<accordion close-others="oneAtATime">
-									<accordion-group heading="{{data.name}}" ng-repeat="data in changedIngredients = (ingredients | filter:search) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
+									<accordion-group heading="{{data.name}}" ng-repeat="data in changedUsers = (users | filter:search) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
       									{{data.description}}
     								</accordion-group>
 								</accordion>
@@ -77,14 +77,7 @@
 				</div>
 
 				<div class="col-md-3">
-					<br> <br> <br> <a href="/addIngredient">
-						<button type="button" class="btn btn-default">Add new
-							ingredient</button>
-					</a> <br> <br> <br> <br>
-					<!-- 					<a href="/addRecipe"> -->
-					<!-- 						<button type="button" class="btn btn-default">Add new -->
-					<!-- 							recipe</button> -->
-					<!-- 					</a> -->
+					
 				</div>
 			</div>
 		</div>

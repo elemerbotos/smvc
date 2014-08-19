@@ -1,7 +1,7 @@
 package com.epam.cooking.jpa.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -18,8 +18,8 @@ public class User {
 	private String password;
 	private boolean enabled;
 
-	@OneToMany(mappedBy="author")
-	private List<Recipe> recipes = new ArrayList<Recipe>();
+	@OneToMany(mappedBy="author", fetch=FetchType.EAGER)
+	private Set<Recipe> recipes = new HashSet<Recipe>();
 
 	public String getUsername() {
 		return username;
@@ -45,11 +45,11 @@ public class User {
 		this.enabled = enabled;
 	}
 
-	public List<Recipe> getRecipes() {
+	public Set<Recipe> getRecipes() {
 		return recipes;
 	}
 
-	public void setRecipes(List<Recipe> recipes) {
+	public void setRecipes(Set<Recipe> recipes) {
 		this.recipes = recipes;
 	}
 

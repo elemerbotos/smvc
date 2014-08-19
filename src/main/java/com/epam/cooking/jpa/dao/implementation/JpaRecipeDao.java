@@ -20,7 +20,7 @@ public class JpaRecipeDao extends GenericJpaDao implements RecipeDao {
 	}
 
 	@Override
-	public Recipe getRecipe(int id) {
+	public Recipe getRecipe(Long id) {
 		return entityManager.find(Recipe.class, id);
 	}
 

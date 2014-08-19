@@ -34,7 +34,7 @@ public class RecipesIngredientsService {
 		recipeDao.addRecipe(recipe);
 	}
 
-	public Recipe getRecipe(int id) {
+	public Recipe getRecipe(Long id) {
 		return recipeDao.getRecipe(id);
 	}
 
@@ -52,7 +52,7 @@ public class RecipesIngredientsService {
 		JSONArray array = obj.getJSONArray("ingreds");
 		for (int i = 0; i < array.length(); ++i) {
 			recipe.addIngredient(
-					ingredientDao.getIngredient(array.getJSONObject(i).getInt("id")), 
+					ingredientDao.getIngredient(array.getJSONObject(i).getLong("id")), 
 					array.getJSONObject(i).getInt("quantity"));
 		}
 		return recipe;
@@ -63,7 +63,7 @@ public class RecipesIngredientsService {
 		ingredientDao.addIngredient(ingredient);
 	}
 
-	public Ingredient getIngredientById(int id) {
+	public Ingredient getIngredientById(Long id) {
 		return ingredientDao.getIngredient(id);
 	}
 
@@ -82,5 +82,9 @@ public class RecipesIngredientsService {
 
 	public List<Category> getCategories() {
 		return categoryDao.getCategories();
+	}
+
+	public List<User> getUsers() {
+		return user.getUsers();
 	}
 }

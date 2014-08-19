@@ -1,5 +1,7 @@
 package com.epam.cooking.jpa.dao.implementation;
 
+import java.util.List;
+
 import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
@@ -23,6 +25,14 @@ public class JpaUserDao extends GenericJpaDao implements UserDao {
 	public void addUser(User user) {
 		entityManager.persist(user);
 		entityManager.flush();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<User> getUsers() {
+		String queryString = "SELECT u FROM User u";
+		Query query = entityManager.createQuery(queryString);
+		return query.getResultList();
 	}
 
 }

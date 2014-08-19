@@ -1,4 +1,4 @@
-var ingredientApp = angular.module('ingredientApp', ['ui.bootstrap']);
+var ingredientApp = angular.module('userApp', ['ui.bootstrap']);
 
 ingredientApp.filter('startFrom', function() {
     return function(input, start) {
@@ -10,32 +10,32 @@ ingredientApp.filter('startFrom', function() {
     };
 });
 
-ingredientApp.controller('ingredientCtrl', function($scope, $http, $timeout, filterFilter){
-    $scope.ingredients = [];
+ingredientApp.controller('userCtrl', function($scope, $http, $timeout, filterFilter){
+    $scope.users = [];
     $scope.oneAtATime = true;
     
-	var responsePromise = $http.get("/ingredientsAJAX");
+	var responsePromise = $http.get("/usersAJAX");
 	responsePromise.success(function(data, status, headers, config) {
-		$scope.ingredients = data;
+		$scope.users = data;
 		$scope.filtered = data;
-		$scope.numberOfItems = $scope.ingredients.length;
-		$scope.noOfPages = Math.ceil($scope.ingredients.length/$scope.entryLimit);
+		$scope.numberOfItems = $scope.users.length;
+		$scope.noOfPages = Math.ceil($scope.users.length/$scope.entryLimit);
 	});
 	responsePromise.error(function(data, status, headers, config) {
 		alert("AJAX failed!");
 	});
 	
-	$scope.numberOfItems = $scope.ingredients.length;
+	$scope.numberOfItems = $scope.users.length;
     $scope.currentPage = 1; //current page
     $scope.maxSize = 5; //pagination max size
     $scope.entryLimit = 5; //max rows for data table
 
     /* init pagination with $scope.list */
-    $scope.noOfPages = Math.ceil($scope.ingredients.length/$scope.entryLimit);
+    $scope.noOfPages = Math.ceil($scope.users.length/$scope.entryLimit);
     
     $scope.$watch('search', function(term) {
         // Create $scope.filtered and then calculat $scope.noOfPages, no racing!
-        $scope.filtered = filterFilter($scope.ingredients, term);
+        $scope.filtered = filterFilter($scope.users, term);
         $scope.noOfPages = Math.ceil($scope.filtered.length/$scope.entryLimit);
         $scope.numberOfItems =  $scope.filtered.length;
     });

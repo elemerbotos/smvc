@@ -8,7 +8,7 @@ public interface IngredientDao {
 	
 	void addIngredient(Ingredient ingredient);
 	
-	Ingredient getIngredient(int id);
+	Ingredient getIngredient(Long id);
 	
 	List<Ingredient> getIngredients();
 }

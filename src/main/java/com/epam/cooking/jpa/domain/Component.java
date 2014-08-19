@@ -9,13 +9,15 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.apache.activemq.filter.function.makeListFunction;
+
 @Entity
 @Table(name = "INGREDIENT_RECIPE")
 public class Component {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	int id;
+	private Long id;
 	
 	@JoinColumn(name="INGREDIENT_ID")
 	@ManyToOne
@@ -55,6 +57,10 @@ public class Component {
 	public String toString() {
 		return "Component [ingredient=" + ingredient.getName() + ", recipe=" + recipe.getName()
 				+ ", amount=" + amount + "]";
+	}
+
+	public String getIngredientName() {
+		return this.ingredient.getName();
 	}
 
 }

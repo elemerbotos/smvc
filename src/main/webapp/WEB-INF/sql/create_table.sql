@@ -52,5 +52,5 @@ FOREIGN KEY(INGREDIENT_ID) REFERENCES INGREDIENT(ID),
 FOREIGN KEY(RECIPE_ID) REFERENCES RECIPE(ID));
 
 INSERT INTO users(username, password, enabled) values ("botose", "1234", true);
-INSERT INTO authorities (username, authority) values ("botose","ROLE_USER");
+INSERT INTO authorities (username, authority) values ("botose","ROLE_USER");ingredient
 INSERT INTO CATEGORY(NAME) values ("leves");

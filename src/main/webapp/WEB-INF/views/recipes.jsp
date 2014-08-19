@@ -14,7 +14,11 @@
 		<div class="col-md-2"></div>
 		<div class="col-md-8">
 			<div class="page-header">
-				<h1>Recipes</h1>
+				<h1>Recipes <a href="/j_spring_security_logout">
+						<button type="submit" class="btn btn-default">
+							<i class="glyphicon glyphicon-log-out"></i> Log out
+						</button>
+					</a></h1>
 
 				<div class="page-header"></div>
 				<div class="row">

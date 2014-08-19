@@ -26,7 +26,7 @@ public class JpaIngredientDao extends GenericJpaDao implements IngredientDao {
 	}
 
 	@Override
-	public Ingredient getIngredient(int id) {
+	public Ingredient getIngredient(Long id) {
 		return entityManager.find(Ingredient.class, id);
 	}
 }
