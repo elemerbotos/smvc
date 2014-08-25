@@ -75,7 +75,6 @@ public class HomeController {
 	public String recipes(Locale locale, Model model) {
 		List<Recipe> recipes = recipeService.getRecipes();
 		int numOfRecipes = recipes.size();
-		System.out.println("NUM:" + numOfRecipes);
 		if (numOfRecipes > NUMBER_OF_RECIPES_TO_DISPLAY) {
 			model.addAttribute(
 					"latestRecipes",
@@ -114,21 +113,12 @@ public class HomeController {
 	public String postIngredient(@ModelAttribute("ingredientForm") Ingredient ingredient , Model model) {
 		ingredient.setAuthor(SecurityContextHolder.getContext().getAuthentication().getName());
 		recipeService.addNewIngredient(ingredient);
-		System.out.println(ingredient.toString());
 		return "ingredients";
 	}
 	
 	@RequestMapping(value = "/usersAJAX", method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
 	public String usersAJAX(Locale locale, Model model) throws JsonGenerationException, JsonMappingException, IOException {
-//		List<User> users = recipeService.getUsers();
-//		List<UserMapper> usersJSON = new ArrayList<>();
-//		
-//		for(User user : users) {
-//			usersJSON.add(mapper.map(user, UserMapper.class));
-//		}
-//		
-//		ObjectMapper mapper = new ObjectMapper();
 		List<User> users = recipeService.getUsers();
 		List<SimpleUser> simpleUsers = new ArrayList<>();
 		for(User user : users) {
