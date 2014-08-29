@@ -17,17 +17,18 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.epam.cooking.jpa.domain.Component;
+import com.epam.cooking.jpa.domain.Authorities;
 import com.epam.cooking.jpa.domain.Ingredient;
 import com.epam.cooking.jpa.domain.Recipe;
 import com.epam.cooking.jpa.domain.User;
 import com.epam.cooking.jpa.service.RecipesIngredientsService;
-import com.epam.cooking.json.SimpleComponent;
+import com.epam.cooking.json.SimpleRecipe;
 import com.epam.cooking.json.SimpleUser;
 
 /**
@@ -127,5 +128,51 @@ public class HomeController {
 		
 		ObjectMapper mapper = new ObjectMapper();
 		return mapper.writeValueAsString(simpleUsers);
+	}
+	
+	@RequestMapping(value = "/recipesAJAX", method = RequestMethod.GET, produces = "application/json")
+	@ResponseBody
+	public String recipesAJAX(Locale locale, Model model) throws JsonGenerationException, JsonMappingException, IOException {
+		List<Recipe> recipes = recipeService.getRecipes();
+		List<SimpleRecipe> simpleRecipes = new ArrayList<>();
+		for(Recipe recipe : recipes) {
+			simpleRecipes.add(dozerMapper.map(recipe, SimpleRecipe.class));
+		}
+		
+		ObjectMapper mapper = new ObjectMapper();
+		LOGGER.info(mapper.writeValueAsString(simpleRecipes));
+		return mapper.writeValueAsString(simpleRecipes);
+	}
+	
+	@RequestMapping(value = "/users", method = RequestMethod.GET)
+	public String users(Locale locale, Model model) {
+		
+		return "users";
+	}
+	
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public String register(Locale locale, Model model) {
+		model.addAttribute("userForm", new User());
+		return "register";
+	}
+	
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public String addUser(@ModelAttribute("userForm") User user, Locale locale, Model model) {
+		LOGGER.info(user.getUsername() + " registered!");
+		Authorities auth = new Authorities();
+		auth.setUser(user);
+		auth.setAuthority("ROLE_USER");
+		user.setAuthority(auth);
+		user.setEnabled(true);
+		recipeService.addUser(user);
+		return "redirect:/login";
+	}
+	
+	@RequestMapping(value = "/recipe/{id}", method = RequestMethod.GET)
+	public String users(@PathVariable Long id, Model model) {
+		LOGGER.info("ID:::::" + id);
+		LOGGER.info(recipeService.getRecipe(id).toString());
+		model.addAttribute("recipe", recipeService.getRecipe(id));
+		return "recipe";
 	}
 }

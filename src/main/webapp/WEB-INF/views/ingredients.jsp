@@ -16,28 +16,32 @@
 		<div class="col-md-2"></div>
 		<div class="col-md-8">
 			<div class="page-header">
-				<h1>Ingredients <a href="/j_spring_security_logout">
-						<button type="submit" class="btn btn-default">
-							<i class="glyphicon glyphicon-log-out"></i> Log out
-						</button>
-					</a></h1>
+				<div class="row">
+					<div class="col-md-8">
+						<h1>Ingredients</h1>
+					</div>
+					<div class="col-md-4 logout">
+						<a href="/j_spring_security_logout">
+							<button type="submit" class="btn btn-default">
+								<i class="glyphicon glyphicon-log-out"></i> Log out
+							</button>
+						</a>
+					</div>
+				</div>
 
 				<div class="page-header"></div>
-				<div class="row">
+				<div class="row main_menu">
 
-					<div class="col-md-2">
+					<div class="col-md-3">
 						<a href="/recipes">Recipes</a>
 					</div>
 					<div class="col-md-3">
 						<a href="/ingredients">Ingredients</a>
 					</div>
-					<div class="col-md-2">
+					<div class="col-md-3">
 						<a href="/users">Users</a>
 					</div>
 					<div class="col-md-3">
-						<a href="/help">Help</a>
-					</div>
-					<div class="col-md-2">
 						<a href="/">Home</a>
 					</div>
 				</div>

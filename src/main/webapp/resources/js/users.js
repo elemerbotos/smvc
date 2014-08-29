@@ -1,6 +1,6 @@
-var ingredientApp = angular.module('userApp', ['ui.bootstrap']);
+var userApp = angular.module('userApp', ['ui.bootstrap']);
 
-ingredientApp.filter('startFrom', function() {
+userApp.filter('startFrom', function() {
     return function(input, start) {
         if(input) {
             start = +start; //parse to int
@@ -10,7 +10,7 @@ ingredientApp.filter('startFrom', function() {
     };
 });
 
-ingredientApp.controller('userCtrl', function($scope, $http, $timeout, filterFilter){
+userApp.controller('userCtrl', function($scope, $http, $timeout, filterFilter){
     $scope.users = [];
     $scope.oneAtATime = true;
     

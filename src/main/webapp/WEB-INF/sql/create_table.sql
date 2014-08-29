@@ -12,14 +12,16 @@ create table IF NOT exists users (
 
 
 create table IF NOT exists authorities (
- username varchar(50) not null,
+ ID INT(10) NOT NULL AUTO_INCREMENT,
+ username varchar(50),
  authority varchar (50) not null,
  constraint fk_authorities_users 
- foreign key(username) references users(username));
+ foreign key(username) references users(username),
+ primary key(ID));
 
 create table IF NOT exists INGREDIENT(
 ID INT(10) NOT NULL AUTO_INCREMENT ,
-NAME VARCHAR(25) NOT NULL,
+NAME VARCHAR(50) NOT NULL,
 UNIT_PRICE INT(10),
 UP_DESCRIPTION VARCHAR(25),
 DESCRIPTION TEXT,
@@ -29,12 +31,12 @@ FOREIGN KEY(AUTHOR) REFERENCES USERS(USERNAME));
 
 create table if not exists CATEGORY(
 ID INT(10) NOT NULL AUTO_INCREMENT,
-NAME VARCHAR(25) NOT NULL,
+NAME VARCHAR(50) NOT NULL,
 PRIMARY KEY(ID));
 
 CREATE TABLE IF NOT EXISTS RECIPE(
 ID INT(10) NOT NULL AUTO_INCREMENT,
-NAME VARCHAR(25) NOT NULL,
+NAME VARCHAR(50) NOT NULL,
 DESCRIPTION TEXT,
 AUTHOR_ID VARCHAR(50) NOT NULL,
 CREATION TIMESTAMP,
@@ -52,5 +54,36 @@ FOREIGN KEY(INGREDIENT_ID) REFERENCES INGREDIENT(ID),
 FOREIGN KEY(RECIPE_ID) REFERENCES RECIPE(ID));
 
 INSERT INTO users(username, password, enabled) values ("botose", "1234", true);
-INSERT INTO authorities (username, authority) values ("botose","ROLE_USER");ingredient
-INSERT INTO CATEGORY(NAME) values ("leves");
+INSERT INTO authorities (username, authority) values ("botose","ROLE_USER");
+INSERT INTO CATEGORY(NAME) values ("Soup");
+INSERT INTO CATEGORY(NAME) values ("Fried meat");
+INSERT INTO CATEGORY(NAME) values ("Baked meat");
+INSERT INTO CATEGORY(NAME) values ("Slow cooked food");
+INSERT INTO CATEGORY(NAME) values ("Side dish");
+INSERT INTO CATEGORY(NAME) values ("Casserole");
+INSERT INTO INGREDIENT(NAME, UNIT_PRICE, DESCRIPTION, AUTHOR) VALUES ("New ingredient", 100, "This is the description of the new ingredient", "botose");
+INSERT INTO RECIPE(NAME, DESCRIPTION, AUTHOR_ID, CREATION, CATEGORY_ID) values ("New recipe", "This is the description of the new recipe.", "botose", now(), 2);
+INSERT INTO INGREDIENT_RECIPE(INGREDIENT_ID, RECIPE_ID, AMOUNT) values (1, 1, 114);
+
+INSERT INTO RECIPE(NAME, DESCRIPTION, AUTHOR_ID, CREATION, CATEGORY_ID) values ("New recipe", "This is the description of the new recipe.", "botose", now(), 2);
+INSERT INTO INGREDIENT_RECIPE(INGREDIENT_ID, RECIPE_ID, AMOUNT) values (1, 2, 114);
+INSERT INTO RECIPE(NAME, DESCRIPTION, AUTHOR_ID, CREATION, CATEGORY_ID) values ("New recipe", "This is the description of the new recipe.", "botose", now(), 2);
+INSERT INTO INGREDIENT_RECIPE(INGREDIENT_ID, RECIPE_ID, AMOUNT) values (1, 3, 114);
+INSERT INTO RECIPE(NAME, DESCRIPTION, AUTHOR_ID, CREATION, CATEGORY_ID) values ("New recipe", "This is the description of the new recipe.", "botose", now(), 2);
+INSERT INTO INGREDIENT_RECIPE(INGREDIENT_ID, RECIPE_ID, AMOUNT) values (1, 4, 114);
+INSERT INTO RECIPE(NAME, DESCRIPTION, AUTHOR_ID, CREATION, CATEGORY_ID) values ("New recipe", "This is the description of the new recipe.", "botose", now(), 2);
+INSERT INTO INGREDIENT_RECIPE(INGREDIENT_ID, RECIPE_ID, AMOUNT) values (1, 5, 114);
+INSERT INTO RECIPE(NAME, DESCRIPTION, AUTHOR_ID, CREATION, CATEGORY_ID) values ("New recipe", "This is the description of the new recipe.", "botose", now(), 2);
+INSERT INTO INGREDIENT_RECIPE(INGREDIENT_ID, RECIPE_ID, AMOUNT) values (1, 6, 114);
+INSERT INTO RECIPE(NAME, DESCRIPTION, AUTHOR_ID, CREATION, CATEGORY_ID) values ("New recipe", "This is the description of the new recipe.", "botose", now(), 2);
+INSERT INTO INGREDIENT_RECIPE(INGREDIENT_ID, RECIPE_ID, AMOUNT) values (1, 7, 114);
+INSERT INTO RECIPE(NAME, DESCRIPTION, AUTHOR_ID, CREATION, CATEGORY_ID) values ("New recipe", "This is the description of the new recipe.", "botose", now(), 2);
+INSERT INTO INGREDIENT_RECIPE(INGREDIENT_ID, RECIPE_ID, AMOUNT) values (1, 8, 114);
+INSERT INTO RECIPE(NAME, DESCRIPTION, AUTHOR_ID, CREATION, CATEGORY_ID) values ("New recipe", "This is the description of the new recipe.", "botose", now(), 2);
+INSERT INTO INGREDIENT_RECIPE(INGREDIENT_ID, RECIPE_ID, AMOUNT) values (1, 9, 114);
+INSERT INTO RECIPE(NAME, DESCRIPTION, AUTHOR_ID, CREATION, CATEGORY_ID) values ("New recipe", "This is the description of the new recipe.", "botose", now(), 2);
+INSERT INTO INGREDIENT_RECIPE(INGREDIENT_ID, RECIPE_ID, AMOUNT) values (1, 10, 114);
+INSERT INTO RECIPE(NAME, DESCRIPTION, AUTHOR_ID, CREATION, CATEGORY_ID) values ("New recipe", "This is the description of the new recipe.", "botose", now(), 2);
+INSERT INTO INGREDIENT_RECIPE(INGREDIENT_ID, RECIPE_ID, AMOUNT) values (1, 11, 114);
+INSERT INTO RECIPE(NAME, DESCRIPTION, AUTHOR_ID, CREATION, CATEGORY_ID) values ("New recipe", "This is the description of the new recipe.", "botose", now(), 2);
+INSERT INTO INGREDIENT_RECIPE(INGREDIENT_ID, RECIPE_ID, AMOUNT) values (1, 12, 114);

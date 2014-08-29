@@ -16,28 +16,32 @@
 		<div class="col-md-2"></div>
 		<div class="col-md-8">
 			<div class="page-header">
-				<h1>Users <a href="/j_spring_security_logout">
-						<button type="submit" class="btn btn-default">
-							<i class="glyphicon glyphicon-log-out"></i> Log out
-						</button>
-					</a></h1>
+				<div class="row">
+					<div class="col-md-8">
+						<h1>Users</h1>
+					</div>
+					<div class="col-md-4 logout">
+						<a href="/j_spring_security_logout">
+							<button type="submit" class="btn btn-default">
+								<i class="glyphicon glyphicon-log-out"></i> Log out
+							</button>
+						</a>
+					</div>
+				</div>
 
 				<div class="page-header"></div>
-				<div class="row">
+				<div class="row main_menu">
 
-					<div class="col-md-2">
+					<div class="col-md-3">
 						<a href="/recipes">Recipes</a>
 					</div>
 					<div class="col-md-3">
 						<a href="/ingredients">Ingredients</a>
 					</div>
-					<div class="col-md-2">
+					<div class="col-md-3">
 						<a href="/users">Users</a>
 					</div>
 					<div class="col-md-3">
-						<a href="/help">Help</a>
-					</div>
-					<div class="col-md-2">
 						<a href="/">Home</a>
 					</div>
 				</div>
@@ -60,8 +64,10 @@
 								<!--Body content-->
 								<br />
 								<accordion close-others="oneAtATime">
-									<accordion-group heading="{{data.name}}" ng-repeat="data in changedUsers = (users | filter:search) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
-      									{{data.description}}
+									<accordion-group heading="{{data.username}}" ng-repeat="data in changedUsers = (users | filter:search) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
+      									<ul>
+      										<li ng-repeat="recipe in recipeList = data.recipes">{{recipe.name}}</li>
+      									</ul>
     								</accordion-group>
 								</accordion>
 
@@ -96,5 +102,5 @@
 <script
 	src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>
 
-<script src="<c:url value="/resources/js/ingredient.js" />"></script>
+<script src="<c:url value="/resources/js/users.js" />"></script>
 </html>

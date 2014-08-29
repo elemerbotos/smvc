@@ -2,7 +2,7 @@
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<html ng-app="openInNewWindow">
+<html ng-app="recipesApp">
 <head>
 <title>Home</title>
 <link rel="stylesheet"
@@ -14,39 +14,59 @@
 		<div class="col-md-2"></div>
 		<div class="col-md-8">
 			<div class="page-header">
-				<h1>Recipes <a href="/j_spring_security_logout">
-						<button type="submit" class="btn btn-default">
-							<i class="glyphicon glyphicon-log-out"></i> Log out
-						</button>
-					</a></h1>
+				<div class="row">
+					<div class="col-md-8">
+						<h1>Recipes</h1>
+					</div>
+					<div class="col-md-4 logout">
+						<a href="/j_spring_security_logout">
+							<button type="submit" class="btn btn-default">
+								<i class="glyphicon glyphicon-log-out"></i> Log out
+							</button>
+						</a>
+					</div>
+				</div>
 
 				<div class="page-header"></div>
-				<div class="row">
+				<div class="row main_menu">
 
-					<div class="col-md-2">
+					<div class="col-md-3">
 						<a href="/recipes">Recipes</a>
 					</div>
 					<div class="col-md-3">
 						<a href="/ingredients">Ingredients</a>
 					</div>
-					<div class="col-md-2">
+					<div class="col-md-3">
 						<a href="/users">Users</a>
 					</div>
 					<div class="col-md-3">
-						<a href="/help">Help</a>
-					</div>
-					<div class="col-md-2">
 						<a href="/">Home</a>
 					</div>
 				</div>
 			</div>
 
+			<div class="row">
+				<div class="col-md-4">
+					<h2>Latest recipes</h2>
+				</div>
+				<div class="col-md-4">
+					<div class="add_recipe_button">
+						<a href="/addRecipe">
+							<button type="button" class="btn btn-default">Add new
+								recipe</button>
+						</a>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<h2>All recipes</h2>
+				</div>
+			</div>
 
 			<div class="row">
-				<div class="col-md-6">
-					<h2>Latest recipes</h2>
+				<div class="col-md-6 long_plate">
+
 					<c:forEach var="recipe" items="${latestRecipes}">
-						<div ng-controller="ModalDemoCtrl">
+						<div ng-controller="ModalCtrl">
 							<table class="table table-striped">
 
 								<tr>
@@ -108,14 +128,23 @@
 				</div>
 
 				<div class="col-md-6">
-					<br> <br> <br> <a href="/addRecipe">
-						<button type="button" class="btn btn-default">Add new
-							recipe</button>
-					</a> <br> <br> <br> <br>
-					<!-- 					<a href="/addRecipe"> -->
-					<!-- 						<button type="button" class="btn btn-default">Add new -->
-					<!-- 							recipe</button> -->
-					<!-- 					</a> -->
+
+					<div ng-controller="RecipesCtrl">
+						
+						<br> Search: <input type="text" ng-model="search"
+							placeholder="Search" /><br /> <br>
+						<div class="plate_background">
+							<div class="recipe_list"
+								ng-repeat="data in filt = (recipes | filter:search) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
+								<a href="/recipe/{{data.id}}">{{data.name}}</a>
+							</div>
+						</div>
+
+						<pagination data-boundary-links="true" total-items="numberOfItems"
+							num-pages="noOfPages" ng-model="currentPage" max-size="maxSize"
+							class="paginationsm" items-per-page="entryLimit"
+							data-previous-text="&laquo;" data-next-text="&raquo;"></pagination>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -134,5 +163,5 @@
 <script
 	src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>
 
-<script src="<c:url value="/resources/js/newWindow.js" />"></script>
+<script src="<c:url value="/resources/js/recipes.js" />"></script>
 </html>

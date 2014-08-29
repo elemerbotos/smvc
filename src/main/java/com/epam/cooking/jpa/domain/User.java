@@ -3,6 +3,7 @@ package com.epam.cooking.jpa.domain;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -17,6 +18,13 @@ public class User {
 	private String username;
 	private String password;
 	private boolean enabled;
+	
+	@OneToMany(
+			fetch=FetchType.EAGER, 
+			mappedBy="user", 
+			cascade=CascadeType.PERSIST
+			)
+	private Set<Authorities> authorities = new HashSet<>();
 
 	@OneToMany(mappedBy="author", fetch=FetchType.EAGER)
 	private Set<Recipe> recipes = new HashSet<Recipe>();
@@ -55,8 +63,20 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [username=" + username + ", password=" + password
-				+ ", enabled=" + enabled + ", recipes=" + recipes + "]";
+		return "User [username=" + username + "]";
+	}
+
+	public void setAuthority(Authorities authority) {
+		this.authorities.add(authority);
+		
+	}
+
+	public Set<Authorities> getAuthorities() {
+		return authorities;
+	}
+
+	public void setAuthorities(Set<Authorities> authorities) {
+		this.authorities = authorities;
 	}
 
 }

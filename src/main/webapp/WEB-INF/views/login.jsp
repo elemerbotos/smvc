@@ -52,6 +52,7 @@
 							in</button>
 					</div>
 				</div>
+				Don't have an account yet? <a href="/register">register</a>!
 
 			</form>
 		</div>
