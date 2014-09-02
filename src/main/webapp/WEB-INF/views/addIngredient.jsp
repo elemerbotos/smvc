@@ -28,18 +28,18 @@
 				</div>
 
 				<div class="page-header"></div>
-				<div class="row main_menu">
+				<div class="row">
 
-					<div class="col-md-3">
+					<div class="col-md-3 menu-items-center">
 						<a href="/recipes">Recipes</a>
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-3 menu-items-center">
 						<a href="/ingredients">Ingredients</a>
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-3 menu-items-center">
 						<a href="/users">Users</a>
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-3 menu-items-center">
 						<a href="/">Home</a>
 					</div>
 				</div>
@@ -50,14 +50,16 @@
 				<div class="form-group">
 					<label for="Name">Name</label>
 					<form:input type="text" name="name" class="form-control" id="name"
-						placeholder="Enter the name of ingredient!" path="name" />
+						placeholder="Enter the name of ingredient!" path="name" required="true"/>
+					<form:errors path="name"/>
 				</div>
 
 				<div class="form-group">
 					<label for="description">Description</label>
 					<form:textarea rows="10" cols="50" name="description" id="description"
 						class="form-control" placeholder="Enter the description of the ingredient!"
-						path="description"></form:textarea>
+						path="description" required="true"></form:textarea>
+					<form:errors path="description"/>
 				</div>
 
 				<div class="form-group">
@@ -65,11 +67,11 @@
 					<form:input type="number" name="price" class="form-control"
 						id="price"
 						placeholder="Enter the price of the ingredient!"
-						path="price"/>
+						path="price" required="true"/>
 				</div>
 				
 				<div class="form-group">
-					<button type="submit" class="btn btn-default" value="Send" />
+					<button type="submit" class="btn btn-default" value="Send">Send</button>
 				</div>
 				</form:form>
 		</div>

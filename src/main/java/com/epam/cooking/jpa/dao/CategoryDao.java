@@ -8,4 +8,6 @@ public interface CategoryDao {
 	Category getCategoryByName(String name);
 	
 	List<Category> getCategories();
+
+	Category getCategoryById(Long id);
 }

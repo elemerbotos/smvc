@@ -30,21 +30,23 @@
 				</div>
 
 				<div class="page-header"></div>
-				<div class="row main_menu">
+				<div class="row">
 
-					<div class="col-md-3">
+					<div class="col-md-3 menu-items-center">
 						<a href="/recipes">Recipes</a>
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-3 menu-items-center">
 						<a href="/ingredients">Ingredients</a>
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-3 menu-items-center">
 						<a href="/users">Users</a>
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-3 menu-items-center">
 						<a href="/">Home</a>
 					</div>
+					
 				</div>
+				
 			</div>
 
 			<div class="row">

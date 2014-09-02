@@ -33,6 +33,10 @@ public class Component {
 		return ingredient;
 	}
 
+	public int getIngredientPrice() {
+		return ingredient.getPrice();
+	}
+	
 	public void setIngredient(Ingredient ingredients) {
 		this.ingredient = ingredients;
 	}

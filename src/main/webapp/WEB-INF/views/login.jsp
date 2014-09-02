@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -18,8 +18,15 @@
 		</div>
 	</c:if>
 
-	<div class="panel panel-default ">
-		<div class="panel-body">
+	<c:if test="${successfullRegistration == true}">
+		<script>
+			alert("Succesfull registration!");
+		</script>
+	</c:if>
+
+	<div class="panel panel-default">
+		<div class="panel-body max-width-30 center-with-auto-div">
+			<h1>Login</h1>
 			<form action="j_spring_security_check" name="f" method="post"
 				class="form-horizontal">
 				<div class="form-group">

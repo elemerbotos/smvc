@@ -28,21 +28,23 @@
 				</div>
 
 				<div class="page-header"></div>
-				<div class="row main_menu">
+				<div class="row">
 
-					<div class="col-md-3">
+					<div class="col-md-3 menu-items-center">
 						<a href="/recipes">Recipes</a>
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-3 menu-items-center">
 						<a href="/ingredients">Ingredients</a>
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-3 menu-items-center">
 						<a href="/users">Users</a>
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-3 menu-items-center">
 						<a href="/">Home</a>
 					</div>
+					
 				</div>
+				
 			</div>
 
 			<div class="modal-header">
@@ -63,8 +65,11 @@
 						</tr>
 					</c:forEach>
 				</table>
-				<br> ${recipe.description} <br> <br> Creation date
-				and user: ${recipe.creation}, <i>${recipe.author.username}</i>
+				<br> 
+				<h4>Description:</h4>${recipe.description} <br> <br> 
+				<h4>Total price:</h4>${totalPrice} <br> <br>
+				<h4>Creation date and user:</h4>${recipe.creation}, <i>${recipe.author.username}</i>
+				 
 			</div>
 			<div class="modal-footer">
 				<a href="${previous}">

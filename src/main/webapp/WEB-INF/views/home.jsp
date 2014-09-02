@@ -33,24 +33,24 @@
 				</div>
 
 				<div class="page-header"></div>
-				<div class="row main_menu">
+				<div class="row">
 
-					<div class="col-md-3">
+					<div class="col-md-3 menu-items-center">
 						<a href="/recipes">Recipes</a>
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-3 menu-items-center">
 						<a href="/ingredients">Ingredients</a>
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-3 menu-items-center">
 						<a href="/users">Users</a>
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-3 menu-items-center">
 						<a href="/">Home</a>
 					</div>
 				</div>
 			</div>
 			<br> <br> <br>
-			<div style="">
+			<div class="image_on_index">
 				<img src="resources/img/339612-svetik.jpg" class="img-rounded"
 					width="70%" />
 			</div>

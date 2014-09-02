@@ -48,7 +48,7 @@ public class RecipesIngredientsService {
 		recipe.setName(obj.getString("name"));
 		recipe.setDescription(obj.getString("desc"));
 		recipe.setAuthor(getUserByName(obj.getString("author")));
-		recipe.setCategory(categoryDao.getCategoryByName(obj.getString("category")));
+		recipe.setCategory(categoryDao.getCategoryById(obj.getLong("category")));
 		JSONArray array = obj.getJSONArray("ingreds");
 		for (int i = 0; i < array.length(); ++i) {
 			recipe.addIngredient(

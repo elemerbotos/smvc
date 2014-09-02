@@ -12,10 +12,6 @@
   <mapping> 
     <class-a>com.epam.cooking.jpa.domain.Recipe</class-a>
     <class-b>com.epam.cooking.jpa.json.SimpleRecipe</class-b>   
-    <field>
-      <a>one</a>
-      <b>onePrime</b>
-    </field>
   </mapping>  
   
   <mapping> 

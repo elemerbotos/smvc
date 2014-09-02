@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Category {
@@ -12,6 +15,8 @@ public class Category {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@NotEmpty(message="Category name cannot be empty! ")
+	@Pattern(regexp="[^<>\"?]+", message="No SQL injection, please!")
 	private String name;
 
 	public Long getId() {

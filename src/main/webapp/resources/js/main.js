@@ -24,6 +24,7 @@ cookingApp.controller('RecipeCtrl', function($scope, $location, $window) {
 	};
 
 	$scope.sendIngredients = function() {
+		var patt = /[^<>]+/;
 		if ($scope.ingredients.length == 0) {
 			alert("No ingredient!");
 		} else if ($scope.desc == undefined) {
@@ -35,6 +36,8 @@ cookingApp.controller('RecipeCtrl', function($scope, $location, $window) {
 		} else if ($scope.category == undefined) {
 			alert("Empty category!");
 		} else {
+			$scope.desc = $scope.desc.replace(/(<([^>]+)>)/ig,"");
+			$scope.name = $scope.name.replace(/(<([^>]+)>)/ig,"");
 			$.post("/addNewRecipe", {
 				recipe : JSON.stringify({
 					name : $scope.name,

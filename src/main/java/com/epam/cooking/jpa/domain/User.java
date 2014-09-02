@@ -9,13 +9,17 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "users")
 public class User {
 
 	@Id
+	@Pattern(regexp="[^<>\"?]+", message="No SQL injection, please!")
 	private String username;
+	
+	@Pattern(regexp="[\\w.?,]+", message="Wrong password")
 	private String password;
 	private boolean enabled;
 	

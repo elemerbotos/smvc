@@ -1,10 +1,5 @@
-#image_on_index {
+.image_on_index {
 	text-align: center;
-}
-
-#component_table {
-	/* 	padding:3px;	 */
-	
 }
 
 .menu-items-center {
@@ -25,30 +20,10 @@
 	font-size: 16;
 }
 
-.square_plate {
-/* 	background-image: url("/resources/img/square_plate.jpg"); */
-}
-
 .add_recipe_button {
 	text-align: left;
-/* 	float: right; */
 	display: block;
 	padding-top: 20px;
-}
-
-/* .plate_background { */
-/* /* 	background-image: url("/resources/img/BATASDP1.png"); */ */
-/* 	background-repeat: no-repeat; */
-/* 	min-height: 370px; */
-/* 	min-width: 370px; */
-/* 	max-height: 370px; */
-/* 	max-width: 370px; */
-/* 	text-align: center; */
-/* 	padding-top: 90px; */
-/* } */
-
-.main_menu {
-	text-align: center;
 }
 
 .logout {
@@ -59,15 +34,20 @@
 	margin-top: 30px;
 }
 
-/* .long_plate { */
-/* /* 	background-image: url("/resources/img/long plate.png"); */ */
-/* 	background-repeat: no-repeat; */
-/* 	min-height: 370px; */
-/* /* 	min-width: 370px; */ */
-/* 	max-height: 370px; */
-/* /* 	max-width: 370px; */ */
-/* } */
-
 .long_plate table {
 	margin: 49px;
+}
+
+.login_panel {
+	text-align: center;
+}
+
+.center-with-auto-div {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10%;
+}
+
+.max-width-30 {
+	max-width: 30%;
 }

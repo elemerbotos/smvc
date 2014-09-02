@@ -4,12 +4,14 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.UniqueConstraint;
 
 @Entity
 public class Authorities {
 	@ManyToOne
 	@JoinColumn(name="username")
 	private User user;
+	
 	private String authority;
 	@Id
 	private long id;

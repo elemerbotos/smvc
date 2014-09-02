@@ -5,8 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Ingredient {
@@ -15,7 +16,10 @@ public class Ingredient {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@NotEmpty(message="Ingredient name cannot be empty! ")
+	@Pattern(regexp="[^<>\"?]+", message="No SQL injection, please!")
 	private String name;
+	@Pattern(regexp="[^<>\"?]+", message="No SQL injection, please!")
 	private String description;
 	
 	@Column(name="UNIT_PRICE")

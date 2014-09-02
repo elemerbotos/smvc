@@ -30,4 +30,13 @@ public class JpaCategoryDao extends GenericJpaDao implements CategoryDao {
 		return query.getResultList();
 	}
 
+	@Override
+	public Category getCategoryById(Long id) {
+		String queryString = "SELECT c FROM Category c where c.id = :id";
+		Query query = entityManager.createQuery(queryString);
+		query.setParameter("id", id);
+
+		return (Category) query.getSingleResult();
+	}
+
 }

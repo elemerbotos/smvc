@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -25,7 +26,9 @@ public class Recipe {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	@Pattern(regexp="[^<>\"]+", message="No SQL injection, please!")
 	private String name;
+	@Pattern(regexp="[^<>\"?]+", message="No SQL injection, please!")
 	private String description;
 	
 	@ManyToOne

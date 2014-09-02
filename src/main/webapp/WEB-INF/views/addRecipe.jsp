@@ -14,6 +14,9 @@
 </head>
 <body ng-controller="RecipeCtrl"
 	ng-init="username='<sec:authentication property="name"/>'">
+	<c:if test="${error}">
+		<script type="text/javascript">alert(${errorMsg});</script>
+	</c:if>
 	<div class="row">
 		<div class="col-md-2"></div>
 		<div class="col-md-8">
@@ -32,21 +35,23 @@
 				</div>
 
 				<div class="page-header"></div>
-				<div class="row main_menu">
+				<div class="row">
 
-					<div class="col-md-3">
+					<div class="col-md-3 menu-items-center">
 						<a href="/recipes">Recipes</a>
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-3 menu-items-center">
 						<a href="/ingredients">Ingredients</a>
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-3 menu-items-center">
 						<a href="/users">Users</a>
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-3 menu-items-center">
 						<a href="/">Home</a>
 					</div>
+					
 				</div>
+				
 			</div>
 			<br> <br> <br>
 			<form role="form">
@@ -68,7 +73,7 @@
 						name="category" id="category" class="form-control">
 						<option selected disabled value="">Choose a category</option>
 						<c:forEach var="category" items="${categories}">
-							<option value="${category.name}">${category.name}</option>
+							<option value="${category.id}">${category.name}</option>
 						</c:forEach>
 					</select>
 				</div>
