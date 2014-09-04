@@ -72,9 +72,7 @@
 				 
 			</div>
 			<div class="modal-footer">
-				<a href="${previous}">
-					<button class="btn btn-primary" type="submit">Return</button>
-				</a>
+				<input action="action" type="button" onclick="history.go(-1);" value="Return to previous page" />
 			</div>
 
 		</div>

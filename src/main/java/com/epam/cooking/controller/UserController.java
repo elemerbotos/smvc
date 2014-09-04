@@ -55,12 +55,10 @@ public class UserController {
 			model.addAttribute("error", true);
 			model.addAttribute("errorMsg", "Already existing username!\n Please specify another!");
 			return "register";
-//			return "redirect:/register?wrongName=true";
 		} catch (ConstraintViolationException ex) {
 			model.addAttribute("error", true);
 			model.addAttribute("errorMsg", "Password can only contain a-Z, 0-9, _, ?, ");
 			return "register";
-//			return "redirect:/register?wrongPassword=true";
 		}
 		return "redirect:/login?successfullRegistration=true";
 	}
