@@ -4,6 +4,7 @@
 <%@ page session="false"%>
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Home</title>
 <link rel="stylesheet"
 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -32,7 +33,7 @@
 					</div>
 				</div>
 
-				<div class="page-header"></div>
+				<hr>
 				<div class="row">
 
 					<div class="col-md-3 menu-items-center">

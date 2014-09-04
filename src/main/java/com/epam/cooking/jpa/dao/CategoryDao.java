@@ -10,4 +10,6 @@ public interface CategoryDao {
 	List<Category> getCategories();
 
 	Category getCategoryById(Long id);
+
+	void save(Category category);
 }

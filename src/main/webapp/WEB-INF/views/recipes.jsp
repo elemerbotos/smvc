@@ -4,12 +4,13 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html ng-app="recipesApp">
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Home</title>
 <link rel="stylesheet"
 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/style.css">
 </head>
-<body>
+<body class="the_best_background">
 	<div class="row">
 		<div class="col-md-2"></div>
 		<div class="col-md-8">
@@ -27,7 +28,7 @@
 					</div>
 				</div>
 
-				<div class="page-header"></div>
+				<hr>
 				<div class="row">
 
 					<div class="col-md-3 menu-items-center">
@@ -133,8 +134,8 @@
 
 					<div ng-controller="RecipesCtrl">
 						
-						<br> Search: <input type="text" ng-model="search"
-							placeholder="Search" /><br /> <br>
+						<br><input type="text" ng-model="search"
+							placeholder="Search" class="form-control"/><br /> <br>
 						<div class="plate_background">
 							<div class="recipe_list"
 								ng-repeat="data in filt = (recipes | filter:search) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">

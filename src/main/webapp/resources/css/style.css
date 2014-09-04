@@ -51,3 +51,16 @@
 .max-width-30 {
 	max-width: 30%;
 }
+
+.the_best_background {
+	background-image: url('/resources/img/bg.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: fixed fixed;
+	
+}
+
+.page-header {
+	background-color: white;
+	opacity: 0.9;
+}

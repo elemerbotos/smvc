@@ -2,12 +2,17 @@ package com.epam.cooking.jpa.service;
 
 import java.util.List;
 
+import javax.persistence.NoResultException;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.epam.cooking.controller.LoginController;
 import com.epam.cooking.jpa.dao.CategoryDao;
 import com.epam.cooking.jpa.dao.IngredientDao;
 import com.epam.cooking.jpa.dao.RecipeDao;
@@ -25,7 +30,7 @@ public class RecipesIngredientsService {
 	@Autowired
 	private IngredientDao ingredientDao;
 	@Autowired
-	private UserDao user;
+	private UserDao userDao;
 	@Autowired
 	private CategoryDao categoryDao;
 
@@ -52,8 +57,8 @@ public class RecipesIngredientsService {
 		JSONArray array = obj.getJSONArray("ingreds");
 		for (int i = 0; i < array.length(); ++i) {
 			recipe.addIngredient(
-					ingredientDao.getIngredient(array.getJSONObject(i).getLong("id")), 
-					array.getJSONObject(i).getInt("quantity"));
+					ingredientDao.getIngredient(array.getJSONObject(i).getLong(
+							"id")), array.getJSONObject(i).getInt("quantity"));
 		}
 		return recipe;
 	}
@@ -73,11 +78,11 @@ public class RecipesIngredientsService {
 
 	@Transactional
 	public void addUser(User user) {
-		this.user.addUser(user);
+		this.userDao.addUser(user);
 	}
-	
+
 	public User getUserByName(String name) {
-		return user.findUserByName(name);
+		return userDao.findUserByName(name);
 	}
 
 	public List<Category> getCategories() {
@@ -85,6 +90,21 @@ public class RecipesIngredientsService {
 	}
 
 	public List<User> getUsers() {
-		return user.getUsers();
+		return userDao.getUsers();
+	}
+
+	@Transactional
+	public void addCategory(Category category) {
+		categoryDao.save(category);
+	}
+
+	public boolean hasCategory(Category category) {
+		boolean result = true;
+		try {
+			categoryDao.getCategoryByName(category.getName());
+		} catch (NoResultException e) {
+			result = false;
+		}
+		return result;
 	}
 }

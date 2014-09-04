@@ -11,13 +11,18 @@
 <link rel="stylesheet" href="/resources/css/style.css">
 </head>
 <body class="the_best_background">
+	<c:if test="${error == true}">
+		<script type="text/javascript">
+			alert("Already existing category!");
+		</script>
+	</c:if>
 	<div class="row">
 		<div class="col-md-2"></div>
 		<div class="col-md-8">
 			<div class="page-header">
 				<div class="row">
 					<div class="col-md-8">
-						<h1>Add new ingredient</h1>
+						<h1>Add new category</h1>
 					</div>
 					<div class="col-md-4 logout">
 						<a href="/j_spring_security_logout">
@@ -29,8 +34,8 @@
 				</div>
 
 				<hr>
-				
-				<div class="row">
+
+				<div class="row" >
 
 					<div class="col-md-3 menu-items-center">
 						<a href="/recipes">Recipes</a>
@@ -47,33 +52,19 @@
 				</div>
 			</div>
 			<br> <br> <br>
-			<form:form role="form" action="/addIngredient" method="POST"
-				commandName="ingredientForm">
+			<form:form role="form" action="/addCategory" method="POST"
+				commandName="categoryForm">
 				<div class="form-group">
 					<label for="Name">Name</label>
 					<form:input type="text" name="name" class="form-control" id="name"
-						placeholder="Enter the name of ingredient!" path="name" required="true"/><br>
-					<form:errors path="name" cssClass="alert alert-danger"/>
+						placeholder="Enter the name of category!" path="name" required="true"/>
+					<form:errors path="name" cssClass="alert-danger"/>
 				</div>
 
-				<div class="form-group">
-					<label for="description">Description</label>
-					<form:textarea rows="10" cols="50" name="description" id="description"
-						class="form-control" placeholder="Enter the description of the ingredient!"
-						path="description" required="true"></form:textarea><br>
-					<form:errors path="description" cssClass="alert alert-danger"/>
-				</div>
-
-				<div class="form-group">
-					<label for="price">Price per unit (100 g)</label>
-					<form:input type="number" name="price" class="form-control"
-						id="price"
-						placeholder="Enter the price of the ingredient!"
-						path="price" required="true"/>
-				</div>
 				
 				<div class="form-group">
-					<button type="submit" class="btn btn-default" value="Send">Send</button>
+					<button type="submit" class="btn btn-default" value="Send">Send</button> <br> <br> <br>
+					<input action="action" type="button" onclick="history.go(-1);" value="Return to previous page" class="btn btn-default" />
 				</div>
 				</form:form>
 		</div>

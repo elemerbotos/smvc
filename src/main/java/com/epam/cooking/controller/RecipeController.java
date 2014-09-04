@@ -30,38 +30,40 @@ import com.epam.cooking.json.SimpleRecipe;
 
 @Controller
 public class RecipeController {
-	
+
 	private static final int NUMBER_OF_RECIPES_TO_DISPLAY = 4;
 
 	private static final Logger LOGGER = LoggerFactory
-			.getLogger(HomeController.class);
-	
+			.getLogger(RecipeController.class);
+
 	private static final Mapper dozerMapper = new DozerBeanMapper();
-		
+
 	@Autowired
 	private RecipesIngredientsService recipeService;
-	
+
 	@RequestMapping(value = "/addRecipe", method = RequestMethod.GET)
-	public String addRecipe(Locale locale, Model model) {
+	public String addRecipe(@RequestParam(defaultValue = "false") boolean categoryAdded, Locale locale, Model model) {
 		model.addAttribute("categories", recipeService.getCategories());
 		model.addAttribute("ingredients", recipeService.getIngredients());
+		model.addAttribute("categoryAdded", categoryAdded);
 		return "addRecipe";
 	}
 
 	@RequestMapping(value = "/addNewRecipe", method = RequestMethod.POST)
 	@ResponseBody
-	public String addNewRecipe(@RequestParam("recipe") String recipeJson, Model model) {
+	public String addNewRecipe(@RequestParam("recipe") String recipeJson,
+			Model model) {
 		Recipe recipe = recipeService.createRecipeFromJson(recipeJson);
 		try {
 			recipeService.addNewRecipe(recipe);
-		} catch(ConstraintViolationException ex) {
+		} catch (ConstraintViolationException ex) {
 			model.addAttribute("errorMsg", "Please don't user < > characters!");
 			model.addAttribute("error", true);
-			return "addRecipe";	
+			return "addRecipe";
 		}
-		
+
 		LOGGER.info("Recipe added");
-		return "done";			
+		return "done";
 	}
 
 	@RequestMapping(value = "/recipes", method = RequestMethod.GET)
@@ -76,7 +78,7 @@ public class RecipeController {
 		}
 		return "recipes";
 	}
-	
+
 	@RequestMapping(value = "/recipesAJAX", method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
 	public String recipesAJAX(Locale locale, Model model)
@@ -91,7 +93,7 @@ public class RecipeController {
 		LOGGER.info(mapper.writeValueAsString(simpleRecipes));
 		return mapper.writeValueAsString(simpleRecipes);
 	}
-	
+
 	@RequestMapping(value = "/recipe/{id}", method = RequestMethod.GET)
 	public String users(@PathVariable Long id, Model model) {
 		Recipe recipe = recipeService.getRecipe(id);

@@ -4,12 +4,13 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Home</title>
 <link rel="stylesheet"
 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/style.css">
 </head>
-<body>
+<body class="the_best_background">
 	<div class="row">
 		<div class="col-md-2"></div>
 		<div class="col-md-8">
@@ -27,7 +28,7 @@
 					</div>
 				</div>
 
-				<div class="page-header"></div>
+				<hr>
 				<div class="row">
 
 					<div class="col-md-3 menu-items-center">
@@ -72,7 +73,7 @@
 				 
 			</div>
 			<div class="modal-footer">
-				<input action="action" type="button" onclick="history.go(-1);" value="Return to previous page" />
+				<input action="action" type="button" onclick="history.go(-1);" value="Return to previous page" class="btn btn-default"/>
 			</div>
 
 		</div>

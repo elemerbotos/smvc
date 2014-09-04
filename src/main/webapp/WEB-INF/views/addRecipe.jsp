@@ -4,6 +4,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html ng-app="cookingApp">
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Home</title>
 <link rel="stylesheet"
 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -13,9 +14,13 @@
 <link rel="stylesheet" href="/resources/css/style.css">
 </head>
 <body ng-controller="RecipeCtrl"
-	ng-init="username='<sec:authentication property="name"/>'">
+	ng-init="username='<sec:authentication property="name"/>'" class="the_best_background">
 	<c:if test="${error}">
-		<script type="text/javascript">alert(${errorMsg});</script>
+		<script type="text/javascript">alert("${errorMsg}");</script>
+	</c:if>
+	
+	<c:if test="${categoryAdded}">
+		<script type="text/javascript">alert("Category successfuly added!");</script>
 	</c:if>
 	<div class="row">
 		<div class="col-md-2"></div>
@@ -34,7 +39,7 @@
 					</div>
 				</div>
 
-				<div class="page-header"></div>
+				<hr>
 				<div class="row">
 
 					<div class="col-md-3 menu-items-center">
@@ -49,11 +54,16 @@
 					<div class="col-md-3 menu-items-center">
 						<a href="/">Home</a>
 					</div>
-					
+
 				</div>
-				
+
 			</div>
-			<br> <br> <br>
+			<br> <a href="/addCategory">
+				<button type="button" class="btn btn-default" style="float: right;">
+					Add new category
+				</button>
+			</a> <br> <br>
+
 			<form role="form">
 				<div class="form-group">
 					<label for="title">Title</label> <input ng-model="name" type="text"
