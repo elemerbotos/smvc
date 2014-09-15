@@ -39,4 +39,9 @@ public class JpaCategoryDao extends GenericJpaDao implements CategoryDao {
 		return (Category) query.getSingleResult();
 	}
 
+	@Override
+	public void save(Category category) {
+		entityManager.persist(category);
+	}
+
 }

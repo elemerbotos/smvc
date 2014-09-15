@@ -10,25 +10,28 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class LoginController {
-    private static final Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
+	private static final Logger LOGGER = LoggerFactory
+			.getLogger(LoginController.class);
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(ModelMap model, @RequestParam(defaultValue="false") boolean successfullRegistration) {
-        model.addAttribute("successfullRegistration", successfullRegistration);
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login(
+			ModelMap model,
+			@RequestParam(defaultValue = "false") boolean successfullRegistration) {
+		model.addAttribute("successfullRegistration", successfullRegistration);
 
-        return "login";
-    }
+		return "login";
+	}
 
-    @RequestMapping(value = "/loginFailed", method = RequestMethod.GET)
-    public String loginFailed(ModelMap model) {
-        LOGGER.info("Login failed");
-        model.addAttribute("error", true);
-        return "login";
-    }
+	@RequestMapping(value = "/loginFailed", method = RequestMethod.GET)
+	public String loginFailed(ModelMap model) {
+		LOGGER.info("Login failed");
+		model.addAttribute("error", true);
+		return "login";
+	}
 
-    @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public String logout(ModelMap model) {
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(ModelMap model) {
 
-        return "login";
-    }
+		return "login";
+	}
 }

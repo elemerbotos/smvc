@@ -33,7 +33,7 @@ import com.epam.cooking.json.SimpleUser;
 public class IngredientController {
 
 	private static final Logger LOGGER = LoggerFactory
-			.getLogger(HomeController.class);
+			.getLogger(IngredientController.class);
 	
 	private static final Mapper dozerMapper = new DozerBeanMapper();
 
@@ -70,8 +70,6 @@ public class IngredientController {
 			@ModelAttribute("ingredientForm") @Valid Ingredient ingredient,
 			BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
-			LOGGER.info("This cannot happen! Please correct the data validation on Client side!");
-			
 			model.addAttribute("status", bindingResult);
 
 			return "addIngredient";
