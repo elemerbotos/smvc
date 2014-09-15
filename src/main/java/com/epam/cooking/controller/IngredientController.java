@@ -34,12 +34,12 @@ public class IngredientController {
 
 	private static final Logger LOGGER = LoggerFactory
 			.getLogger(IngredientController.class);
-	
+
 	private static final Mapper dozerMapper = new DozerBeanMapper();
 
 	@Autowired
 	private RecipesIngredientsService recipeService;
-	
+
 	@RequestMapping(value = "/ingredients", method = RequestMethod.GET)
 	public String ingredients(Locale locale, Model model) {
 		List<Ingredient> ingredients = recipeService.getIngredients();
@@ -61,7 +61,7 @@ public class IngredientController {
 	public String addIngredient(Locale locale, Model model) {
 
 		model.addAttribute("ingredientForm", new Ingredient());
-		
+
 		return "addIngredient";
 	}
 
@@ -79,20 +79,6 @@ public class IngredientController {
 		recipeService.addNewIngredient(ingredient);
 		LOGGER.info(ingredient.getName());
 		return "ingredients";
-	}
-	
-	@RequestMapping(value = "/usersAJAX", method = RequestMethod.GET, produces = "application/json")
-	@ResponseBody
-	public String usersAJAX(Locale locale, Model model)
-			throws JsonGenerationException, JsonMappingException, IOException {
-		List<User> users = recipeService.getUsers();
-		List<SimpleUser> simpleUsers = new ArrayList<>();
-		for (User user : users) {
-			simpleUsers.add(dozerMapper.map(user, SimpleUser.class));
-		}
-
-		ObjectMapper mapper = new ObjectMapper();
-		return mapper.writeValueAsString(simpleUsers);
 	}
 
 }

@@ -25,21 +25,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.epam.cooking.jpa.domain.Authorities;
-import com.epam.cooking.jpa.domain.Recipe;
 import com.epam.cooking.jpa.domain.User;
 import com.epam.cooking.jpa.service.RecipesIngredientsService;
-import com.epam.cooking.json.SimpleRecipe;
+import com.epam.cooking.json.SimpleUser;
 import com.epam.cooking.json.SimpleUsername;
 
 @Controller
 public class UserController {
+
+	private static final String ANONYMUS = "Anonymus";
+
+	private static final String ADMIN = "admin";
 
 	@Autowired
 	private RecipesIngredientsService recipeService;
 
 	private static final Logger LOGGER = LoggerFactory
 			.getLogger(UserController.class);
-	
+
 	private static final Mapper dozerMapper = new DozerBeanMapper();
 
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
@@ -78,15 +81,15 @@ public class UserController {
 		}
 		return "redirect:/login?successfullRegistration=true";
 	}
-	
+
 	@RequestMapping(value = "/userNamesAJAX", method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
-	public String usersAJAX(Locale locale, Model model)
+	public String usersNamesAJAX(Locale locale, Model model)
 			throws JsonGenerationException, JsonMappingException, IOException {
-		LOGGER.info("BELEJÖN");
 		List<User> users = recipeService.getUsers();
 		List<SimpleUsername> simpleUsernames = new ArrayList<>();
 		for (User user : users) {
+
 			simpleUsernames.add(dozerMapper.map(user, SimpleUsername.class));
 		}
 
@@ -94,6 +97,31 @@ public class UserController {
 		LOGGER.info(mapper.writeValueAsString(simpleUsernames));
 		String result = mapper.writeValueAsString(simpleUsernames);
 		LOGGER.info(result);
+		return result;
+	}
+	
+	@RequestMapping(value = "/usersAJAX", method = RequestMethod.GET, produces = "application/json")
+	@ResponseBody
+	public String usersAJAX(Locale locale, Model model)
+			throws JsonGenerationException, JsonMappingException, IOException {
+		List<User> users = recipeService.getUsers();
+		List<SimpleUser> simpleUsers = new ArrayList<>();
+		for (User user : users) {
+			if (!specialUser(user)) {
+				simpleUsers.add(dozerMapper.map(user, SimpleUser.class));
+			}
+		}
+
+		ObjectMapper mapper = new ObjectMapper();
+		return mapper.writeValueAsString(simpleUsers);
+	}
+
+	private boolean specialUser(User user) {
+		boolean result = false;
+		String userName = user.getUsername();
+		if (userName.equals(ADMIN) || userName.equals(ANONYMUS)) {
+			result = true;
+		}
 		return result;
 	}
 }
