@@ -48,7 +48,7 @@
 				
 			</div>
 
-			<div class="row">
+			<div class="row mainContent">
 				<div class="col-md-9">
 					<div class="container-fluid" ng-controller="ingredientCtrl">
 					
@@ -92,6 +92,7 @@
 					<!-- 					</a> -->
 				</div>
 			</div>
+			
 		</div>
 		<div class="col-md-2"></div>
 	</div>

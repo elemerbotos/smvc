@@ -43,37 +43,45 @@
 					<div class="col-md-3 menu-items-center">
 						<a href="/">Home</a>
 					</div>
-					
+
 				</div>
-				
+
 			</div>
 
-			<div class="modal-header">
-				<h3 class="modal-title">${recipe.name}</h3>
-			</div>
-			<div class="modal-body">
-				<h4>Category:</h4>
-				${recipe.category.name} <br> <br> <br>
-				<table class="table table-condensed">
-					<tr>
-						<th>Ingredient name</th>
-						<th>Quantity (in gramms)</th>
-					</tr>
-					<c:forEach var="component" items="${recipe.components}">
+			<div class="mainContent">
+
+				<div class="modal-header">
+					<h3 class="modal-title">${recipe.name}</h3>
+				</div>
+				<div class="modal-body">
+					<h4>Category:</h4>
+					${recipe.category.name} <br> <br> <br>
+					<table class="table table-condensed">
 						<tr>
-							<td>${component.ingredient.name}</td>
-							<td>${component.amount}</td>
+							<th>Ingredient name</th>
+							<th>Quantity (in gramms)</th>
 						</tr>
-					</c:forEach>
-				</table>
-				<br> 
-				<h4>Description:</h4>${recipe.description} <br> <br> 
-				<h4>Total price:</h4>${totalPrice} <br> <br>
-				<h4>Creation date and user:</h4>${recipe.creation}, <i>${recipe.author.username}</i>
-				 
-			</div>
-			<div class="modal-footer">
-				<input action="action" type="button" onclick="history.go(-1);" value="Return to previous page" class="btn btn-default"/>
+						<c:forEach var="component" items="${recipe.components}">
+							<tr>
+								<td>${component.ingredient.name}</td>
+								<td>${component.amount}</td>
+							</tr>
+						</c:forEach>
+					</table>
+					<br>
+					<h4>Description:</h4>${recipe.description}
+					<br> <br>
+					<h4>Total price:</h4>${totalPrice}
+					<br> <br>
+					<h4>Creation date and user:</h4>${recipe.creation},
+					<i>${recipe.author.username}</i>
+
+				</div>
+				<div class="modal-footer">
+					<input action="action" type="button" onclick="history.go(-1);"
+						value="Return to previous page" class="btn btn-default" />
+				</div>
+
 			</div>
 
 		</div>

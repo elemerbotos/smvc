@@ -29,7 +29,7 @@
 				</div>
 
 				<hr>
-				
+
 				<div class="row">
 
 					<div class="col-md-3 menu-items-center">
@@ -47,35 +47,40 @@
 				</div>
 			</div>
 			<br> <br> <br>
-			<form:form role="form" action="/addIngredient" method="POST"
-				commandName="ingredientForm">
-				<div class="form-group">
-					<label for="Name">Name</label>
-					<form:input type="text" name="name" class="form-control" id="name"
-						placeholder="Enter the name of ingredient!" path="name" required="true"/><br>
-					<form:errors path="name" cssClass="alert alert-danger"/>
-				</div>
+			<div class="mainContent">
+				<form:form role="form" action="/addIngredient" method="POST"
+					commandName="ingredientForm">
+					<div class="form-group">
+						<label for="Name">Name</label>
+						<form:input type="text" name="name" class="form-control" id="name"
+							placeholder="Enter the name of ingredient!" path="name"
+							required="true" />
+						<br>
+						<form:errors path="name" cssClass="alert alert-danger" />
+					</div>
 
-				<div class="form-group">
-					<label for="description">Description</label>
-					<form:textarea rows="10" cols="50" name="description" id="description"
-						class="form-control" placeholder="Enter the description of the ingredient!"
-						path="description" required="true"></form:textarea><br>
-					<form:errors path="description" cssClass="alert alert-danger"/>
-				</div>
+					<div class="form-group">
+						<label for="description">Description</label>
+						<form:textarea rows="10" cols="50" name="description"
+							id="description" class="form-control"
+							placeholder="Enter the description of the ingredient!"
+							path="description" required="true"></form:textarea>
+						<br>
+						<form:errors path="description" cssClass="alert alert-danger" />
+					</div>
 
-				<div class="form-group">
-					<label for="price">Price per unit (100 g)</label>
-					<form:input type="number" name="price" class="form-control"
-						id="price"
-						placeholder="Enter the price of the ingredient!"
-						path="price" required="true"/>
-				</div>
-				
-				<div class="form-group">
-					<button type="submit" class="btn btn-default" value="Send">Send</button>
-				</div>
+					<div class="form-group">
+						<label for="price">Price per unit (100 g)</label>
+						<form:input type="number" name="price" class="form-control"
+							id="price" placeholder="Enter the price of the ingredient!"
+							path="price" required="true" />
+					</div>
+
+					<div class="form-group">
+						<button type="submit" class="btn btn-default" value="Send">Send</button>
+					</div>
 				</form:form>
+			</div>
 		</div>
 		<div class="col-md-2"></div>
 

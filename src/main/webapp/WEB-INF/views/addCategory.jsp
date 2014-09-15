@@ -35,7 +35,7 @@
 
 				<hr>
 
-				<div class="row" >
+				<div class="row">
 
 					<div class="col-md-3 menu-items-center">
 						<a href="/recipes">Recipes</a>
@@ -51,22 +51,27 @@
 					</div>
 				</div>
 			</div>
-			<br> <br> <br>
-			<form:form role="form" action="/addCategory" method="POST"
-				commandName="categoryForm">
-				<div class="form-group">
-					<label for="Name">Name</label>
-					<form:input type="text" name="name" class="form-control" id="name"
-						placeholder="Enter the name of category!" path="name" required="true"/>
-					<form:errors path="name" cssClass="alert-danger"/>
-				</div>
+			<div class="mainContent">
+				<br> <br> <br>
+				<form:form role="form" action="/addCategory" method="POST"
+					commandName="categoryForm">
+					<div class="form-group">
+						<label for="Name">Name</label>
+						<form:input type="text" name="name" class="form-control" id="name"
+							placeholder="Enter the name of category!" path="name"
+							required="true" />
+						<form:errors path="name" cssClass="alert-danger" />
+					</div>
 
-				
-				<div class="form-group">
-					<button type="submit" class="btn btn-default" value="Send">Send</button> <br> <br> <br>
-					<input action="action" type="button" onclick="history.go(-1);" value="Return to previous page" class="btn btn-default" />
-				</div>
+
+					<div class="form-group">
+						<button type="submit" class="btn btn-default" value="Send">Send</button>
+						<br> <br> <br> <input action="action" type="button"
+							onclick="history.go(-1);" value="Return to previous page"
+							class="btn btn-default" />
+					</div>
 				</form:form>
+			</div>
 		</div>
 		<div class="col-md-2"></div>
 
