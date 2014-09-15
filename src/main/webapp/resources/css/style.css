@@ -66,6 +66,8 @@
 }
 
 .mainContent {
+	
 	background-color: white;
 	opacity: 0.85;
+	padding: 20px;
 }

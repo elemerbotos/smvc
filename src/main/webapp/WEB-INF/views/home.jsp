@@ -10,7 +10,7 @@
 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="/resources/css/style.css">
 </head>
-<body>
+<body class="the_best_background">
 	<div class="row">
 		<div class="col-md-2"></div>
 		<div class="col-md-8">
@@ -51,10 +51,6 @@
 				</div>
 			</div>
 			<br> <br> <br>
-			<div class="image_on_index">
-				<img src="resources/img/339612-svetik.jpg" class="img-rounded"
-					width="70%" />
-			</div>
 
 		</div>
 
