@@ -18,7 +18,8 @@
 		<intercept-url pattern="/login" access="isAnonymous()"/>
 		<intercept-url pattern="/loginFailed" access="isAnonymous()"/>
 		<intercept-url pattern="/logout" access="isAnonymous()"/>
-		<intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
+		<intercept-url pattern="/removeRecipe" access="hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/**" access="hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')" />
 		<form-login login-page="/login" authentication-failure-url="/loginFailed.html"/>
 		<logout logout-success-url="/"/>
 		<remember-me key="uniqueAndSecret" />

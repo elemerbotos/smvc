@@ -41,6 +41,17 @@ public class RecipeController {
 	@Autowired
 	private RecipesIngredientsService recipeService;
 
+	@RequestMapping(value = "/recipe/removeRecipe", method = RequestMethod.GET)
+	public String removeRecipe(@RequestParam("id") long id, Locale locale, Model model) {
+//		recipeService.deleteRecipe(id);
+		recipeService.removeIngredients(id);
+		LOGGER.info("Components of recipe id:" + id + " removed");
+		recipeService.removeRecipe(id);
+		LOGGER.info("Recipe with id:" + id + " removed");
+		return "redirect:/recipes";
+		
+	}
+	
 	@RequestMapping(value = "/addRecipe", method = RequestMethod.GET)
 	public String addRecipe(@RequestParam(defaultValue = "false") boolean categoryAdded, Locale locale, Model model) {
 		model.addAttribute("categories", recipeService.getCategories());

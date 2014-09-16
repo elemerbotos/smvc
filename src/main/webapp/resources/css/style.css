@@ -86,3 +86,7 @@
 .float-right {
 	float: right;
 }
+
+.ingredients-table {
+	margin-top: 30px;
+}

@@ -50,11 +50,15 @@
 
 				<div class="modal-header">
 					<h3 class="modal-title">${recipe.name}</h3>
+					<sec:authorize access="hasRole('ROLE_ADMIN')">
+						<a href="removeRecipe?id=${recipe.id}"
+							class="btn btn-default float-right">Remove recipe</a>
+					</sec:authorize>
 				</div>
 				<div class="modal-body">
 					<h4>Category:</h4>
-					${recipe.category.name} <br> <br> <br>
-					<table class="table table-condensed">
+					${recipe.category.name} <br>
+					<table class="table table-condensed ingredients-table">
 						<tr>
 							<th>Ingredient name</th>
 							<th>Quantity (in gramms)</th>

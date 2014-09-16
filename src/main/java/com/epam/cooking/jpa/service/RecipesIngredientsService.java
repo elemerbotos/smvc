@@ -2,18 +2,24 @@ package com.epam.cooking.jpa.service;
 
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.persistence.NoResultException;
 
+import org.hibernate.validator.constraints.Email;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import com.epam.cooking.controller.LoginController;
 import com.epam.cooking.jpa.dao.CategoryDao;
+import com.epam.cooking.jpa.dao.ComponentDao;
 import com.epam.cooking.jpa.dao.IngredientDao;
 import com.epam.cooking.jpa.dao.RecipeDao;
 import com.epam.cooking.jpa.dao.UserDao;
@@ -33,6 +39,11 @@ public class RecipesIngredientsService {
 	private UserDao userDao;
 	@Autowired
 	private CategoryDao categoryDao;
+	@Autowired
+	private ComponentDao componentDao;
+	
+	@Resource
+	protected PlatformTransactionManager txManager;
 
 	@Transactional
 	public void addNewRecipe(Recipe recipe) {
@@ -106,5 +117,24 @@ public class RecipesIngredientsService {
 			result = false;
 		}
 		return result;
+	}
+	
+	@Transactional
+	public void removeRecipe(long id) {
+		TransactionStatus status = txManager.getTransaction(new DefaultTransactionDefinition());
+		recipeDao.deleteRecipeBy(id);
+		txManager.commit(status);
+	}
+	
+	@Transactional
+	public void removeIngredients(long id) {
+		TransactionStatus status = txManager.getTransaction(new DefaultTransactionDefinition());
+		componentDao.deleteComponentWhereRecipe(id);
+		txManager.commit(status);
+	}
+	
+	public void deleteRecipe(long id) {
+		removeIngredients(id);
+		removeRecipe(id);
 	}
 }

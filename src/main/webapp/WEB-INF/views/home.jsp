@@ -66,7 +66,7 @@
         								<div class="modal-body">
 											<h4>Category:</h4>
 											${recipe.category.name}
-											<table class="table table-condensed">
+											<table class="table table-condensed ingredients-table">
 												<tr>
 													<th>Ingredient name</th>
 													<th>Quantity (in gramms)</th>
@@ -79,7 +79,7 @@
 											</c:forEach>
 											</table>
 											${recipe.description}
-											
+											<br>
 											Creation date and user: ${recipe.creation}, <i>${recipe.author.username}</i>
         								</div>
         								<div class="modal-footer">

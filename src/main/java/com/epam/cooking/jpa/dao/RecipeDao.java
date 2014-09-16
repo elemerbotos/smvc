@@ -12,4 +12,6 @@ public interface RecipeDao {
 	
 	List<Recipe> getRecipes();
 
+	void deleteRecipeBy(long id);
+
 }
