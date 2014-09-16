@@ -20,10 +20,8 @@
 						<h1>Ingredients</h1>
 					</div>
 					<div class="col-md-4 logout">
-						<a href="/j_spring_security_logout">
-							<button type="submit" class="btn btn-default">
-								<i class="glyphicon glyphicon-log-out"></i> Log out
-							</button>
+						<a href="/j_spring_security_logout" class="btn btn-default"> <i
+							class="glyphicon glyphicon-log-out"></i> Log out
 						</a>
 					</div>
 				</div>
@@ -58,25 +56,23 @@
 							class="form-control" /><br>
 
 						<div class="search-result">
-						<accordion close-others="oneAtATime"> <accordion-group
-							heading="{{data.name}}"
-							ng-repeat="data in changedIngredients = (ingredients | filter:search) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
-						{{data.description}} </accordion-group> </accordion> </div>
+							<accordion close-others="oneAtATime"> <accordion-group
+								heading="{{data.name}}"
+								ng-repeat="data in changedIngredients = (ingredients | filter:search) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
+							{{data.description}} </accordion-group> </accordion>
+						</div>
 
-							<pagination data-boundary-links="true"
-								total-items="numberOfItems" num-pages="noOfPages"
-								ng-model="currentPage" max-size="maxSize" class="paginationsm"
-								items-per-page="entryLimit" data-previous-text="&laquo;"
-								data-next-text="&raquo;"></pagination>
-							<pre>The selected page no: {{currentPage}} of {{noOfPages}}</pre>
+						<pagination data-boundary-links="true" total-items="numberOfItems"
+							num-pages="noOfPages" ng-model="currentPage" max-size="maxSize"
+							class="paginationsm" items-per-page="entryLimit"
+							data-previous-text="&laquo;" data-next-text="&raquo;"></pagination>
+						<pre>The selected page no: {{currentPage}} of {{noOfPages}}</pre>
 					</div>
 				</div>
 
 				<div class="col-md-6">
-					<a href="/addIngredient">
-						<button type="button" class="btn btn-default">Add new
-							ingredient</button>
-					</a>
+					<a href="/addIngredient" class="btn btn-default"> Add new
+						ingredient </a>
 				</div>
 			</div>
 

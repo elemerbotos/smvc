@@ -25,10 +25,8 @@
 						<h1>Add new category</h1>
 					</div>
 					<div class="col-md-4 logout">
-						<a href="/j_spring_security_logout">
-							<button type="submit" class="btn btn-default">
-								<i class="glyphicon glyphicon-log-out"></i> Log out
-							</button>
+						<a href="/j_spring_security_logout" class="btn btn-default"> <i
+							class="glyphicon glyphicon-log-out"></i> Log out
 						</a>
 					</div>
 				</div>
@@ -65,9 +63,8 @@
 
 					<div class="form-group">
 						<button type="submit" class="btn btn-default" value="Send">Send</button>
-						<input action="action" type="button"
-							onclick="history.go(-1);" value="Return to previous page"
-							class="btn btn-default" />
+						<input action="action" type="button" onclick="history.go(-1);"
+							value="Return to previous page" class="btn btn-default" />
 					</div>
 				</form:form>
 			</div>

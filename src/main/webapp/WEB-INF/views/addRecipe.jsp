@@ -36,10 +36,8 @@
 						<h1>Add new recipe</h1>
 					</div>
 					<div class="col-md-4 logout">
-						<a href="/j_spring_security_logout">
-							<button type="submit" class="btn btn-default">
-								<i class="glyphicon glyphicon-log-out"></i> Log out
-							</button>
+						<a href="/j_spring_security_logout" class="btn btn-default"> <i
+							class="glyphicon glyphicon-log-out"></i> Log out
 						</a>
 					</div>
 				</div>
@@ -63,11 +61,11 @@
 				</div>
 
 			</div>
-			<a href="/addCategory">
-				<button type="button" class="btn btn-default" style="float: right;">
-					Add new category</button>
-			</a>
+
 			<div class="mainContent">
+				<a href="/addCategory" class="btn btn-default float-right"> Add
+					new category </a>
+
 				<form role="form">
 					<div class="form-group">
 						<label for="title">Title</label> <input ng-model="name"
@@ -112,17 +110,17 @@
 						</div>
 
 						<div class="col-md-4">
-							<label for="addToListButton">&nbsp;</label><input
-								type="button" value="Add to list"
-								ng-click="addToList(ingredient, quantity)"
-								class="btn btn-default" id="addToListButton" />
+							<label for="addToListButton">&nbsp;</label><input type="button"
+								value="Add to list" ng-click="addToList(ingredient, quantity)"
+								class="btn btn-default top-margin-50" id="addToListButton" /> 
+							
+							
+							
+							<input type="button" value="Send" ng-click="sendIngredients()"
+							class="btn btn-default top-margin-50 float-right" />
 						</div>
 					</div>
 
-					<div style="">
-						<input type="button" value="Send" ng-click="sendIngredients()"
-							class="btn btn-default" />
-					</div>
 				</form>
 
 				<h2>Added ingredients:</h2>

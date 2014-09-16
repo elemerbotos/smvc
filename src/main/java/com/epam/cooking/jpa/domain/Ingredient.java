@@ -17,9 +17,9 @@ public class Ingredient {
 	private Long id;
 	
 	@NotEmpty(message="Ingredient name cannot be empty! ")
-	@Pattern(regexp="[^<>\"?]+", message="No SQL injection, please!")
+	@Pattern(regexp="[^<>?]+", message="No SQL injection, please!")
 	private String name;
-	@Pattern(regexp="[^<>\"?]+", message="No SQL injection, please!")
+	@Pattern(regexp="[^<>?]+", message="No SQL injection, please!")
 	private String description;
 	
 	@Column(name="UNIT_PRICE")

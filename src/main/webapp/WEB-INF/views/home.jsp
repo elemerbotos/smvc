@@ -24,10 +24,8 @@
 						</h1>
 					</div>
 					<div class="col-md-4 logout">
-						<a href="/j_spring_security_logout">
-							<button type="submit" class="btn btn-default">
-								<i class="glyphicon glyphicon-log-out"></i> Log out
-							</button>
+						<a href="/j_spring_security_logout" class="btn btn-default"> <i
+							class="glyphicon glyphicon-log-out"></i> Log out
 						</a>
 					</div>
 				</div>
@@ -49,7 +47,7 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="row mainContent">
 				<div class="col-md-3"></div>
 				<div class="col-md-6">

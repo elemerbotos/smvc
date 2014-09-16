@@ -30,8 +30,8 @@
 	float: right;
 }
 
-.logout button {
-	margin-top: 30px;
+.top-margin-50 {
+	margin-top: 50px;
 }
 
 .long_plate table {
@@ -74,6 +74,15 @@
 /* 	position: relative; */
 }
 
+.mainContent label {
+	margin-top: 15px;
+	margin-bottom: 15px;	
+}
+
 .search-result {
 	min-height: 50%;
+}
+
+.float-right {
+	float: right;
 }
