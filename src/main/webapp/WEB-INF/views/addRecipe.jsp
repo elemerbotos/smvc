@@ -63,10 +63,10 @@
 				</div>
 
 			</div>
-			<br> <a href="/addCategory">
+			<a href="/addCategory">
 				<button type="button" class="btn btn-default" style="float: right;">
 					Add new category</button>
-			</a> <br> <br>
+			</a>
 			<div class="mainContent">
 				<form role="form">
 					<div class="form-group">
@@ -112,7 +112,7 @@
 						</div>
 
 						<div class="col-md-4">
-							<label for="addToListButton">&nbsp;</label><br> <input
+							<label for="addToListButton">&nbsp;</label><input
 								type="button" value="Add to list"
 								ng-click="addToList(ingredient, quantity)"
 								class="btn btn-default" id="addToListButton" />

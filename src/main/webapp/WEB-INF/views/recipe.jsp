@@ -70,9 +70,9 @@
 					</table>
 					<br>
 					<h4>Description:</h4>${recipe.description}
-					<br> <br>
+					<br>
 					<h4>Total price:</h4>${totalPrice}
-					<br> <br>
+					<br>
 					<h4>Creation date and user:</h4>${recipe.creation},
 					<i>${recipe.author.username}</i>
 

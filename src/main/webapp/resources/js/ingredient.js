@@ -28,7 +28,7 @@ ingredientApp.controller('ingredientCtrl', function($scope, $http, $timeout, fil
 	$scope.numberOfItems = $scope.ingredients.length;
     $scope.currentPage = 1; //current page
     $scope.maxSize = 5; //pagination max size
-    $scope.entryLimit = 5; //max rows for data table
+    $scope.entryLimit = 10; //max rows for data table
 
     /* init pagination with $scope.list */
     $scope.noOfPages = Math.ceil($scope.ingredients.length/$scope.entryLimit);

@@ -55,9 +55,10 @@
 .the_best_background {
 	background-image: url('/resources/img/bg.jpg');
 	background-repeat: no-repeat;
-	background-size: cover;
+	/* 	background-size: cover; */
 	background-position: fixed fixed;
-	
+	background-attachment: fixed;
+	background-size: contain;
 }
 
 .page-header {
@@ -66,8 +67,13 @@
 }
 
 .mainContent {
-	
+	min-height: 678px;
 	background-color: white;
 	opacity: 0.85;
 	padding: 20px;
+/* 	position: relative; */
+}
+
+.search-result {
+	min-height: 50%;
 }

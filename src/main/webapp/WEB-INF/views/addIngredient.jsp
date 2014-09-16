@@ -46,7 +46,6 @@
 					</div>
 				</div>
 			</div>
-			<br> <br> <br>
 			<div class="mainContent">
 				<form:form role="form" action="/addIngredient" method="POST"
 					commandName="ingredientForm">
@@ -55,7 +54,6 @@
 						<form:input type="text" name="name" class="form-control" id="name"
 							placeholder="Enter the name of ingredient!" path="name"
 							required="true" />
-						<br>
 						<form:errors path="name" cssClass="alert alert-danger" />
 					</div>
 
@@ -65,7 +63,6 @@
 							id="description" class="form-control"
 							placeholder="Enter the description of the ingredient!"
 							path="description" required="true"></form:textarea>
-						<br>
 						<form:errors path="description" cssClass="alert alert-danger" />
 					</div>
 

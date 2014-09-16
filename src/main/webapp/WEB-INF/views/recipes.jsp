@@ -48,111 +48,34 @@
 
 			</div>
 
-			<div class="mainContent">
-				<div class="row">
-					<div class="col-md-4">
-						<h2>Latest recipes</h2>
-					</div>
-					<div class="col-md-4">
-						<div class="add_recipe_button">
-							<a href="/addRecipe">
-								<button type="button" class="btn btn-default">Add new
-									recipe</button>
-							</a>
+			<div class="row mainContent">
+				<div class="col-md-6">
+					<div ng-controller="RecipesCtrl" class="container-fluid">
+
+						<input type="text" ng-model="search" placeholder="Search"
+							class="form-control" /><br>
+						<div class="search-result">
+							<div class="recipe_list"
+								ng-repeat="data in filt = (recipes | filter:search) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
+								<a href="/recipe/{{data.id}}">{{data.name}}</a>
+							</div>
 						</div>
-					</div>
-					<div class="col-md-4">
-						<h2>All recipes</h2>
+
+						<pagination data-boundary-links="true" total-items="numberOfItems"
+							num-pages="noOfPages" ng-model="currentPage" max-size="maxSize"
+							class="paginationsm" items-per-page="entryLimit"
+							data-previous-text="&laquo;" data-next-text="&raquo;"></pagination>
+						<pre>The selected page no: {{currentPage}} of {{noOfPages}}</pre>
 					</div>
 				</div>
 
-				<div class="row">
-					<div class="col-md-6">
-
-						<c:forEach var="recipe" items="${latestRecipes}">
-							<div ng-controller="ModalCtrl">
-								<table class="table table-striped">
-
-									<tr>
-
-										<script type="text/ng-template"
-											id="myModalContent_${recipe.id}.html">
-       									<div class="modal-header">
-            								<h3 class="modal-title">${recipe.name}</h3>
-        								</div>
-        								<div class="modal-body">
-											<h4>Category:</h4>
-											${recipe.category.name}
-											<br><br><br>
-											<table class="table table-condensed">
-												<tr>
-													<th>Ingredient name</th>
-													<th>Quantity (in gramms)</th>
-												</tr>
-											<c:forEach var="component" items="${recipe.components}">
-												<tr>
-													<td>${component.ingredient.name}</td>
-													<td>${component.amount}</td>
-												</tr>
-											</c:forEach>
-											</table>
-											<br>
-											${recipe.description}
-											
-
-											<br>
-											<br>
-											Creation date and user: ${recipe.creation}, <i>${recipe.author.username}</i>
-        								</div>
-        								<div class="modal-footer">
-            								<button class="btn btn-primary" ng-click="ok()">Close</button>
-        								</div>
-    								</script>
-
-
-										<th colspan="2">${recipe.name}</th>
-									</tr>
-
-									<tr>
-										<td>Author: ${recipe.author.username}</td>
-										<td>Category: ${recipe.category.name}</td>
-									</tr>
-									<tr>
-										<td colspan="2">
-											<button class="btn btn-default" ng-click="open(${recipe.id})"
-												ng-model="recipe">Read recipe!</button>
-										</td>
-									</tr>
-								</table>
-
-
-							</div>
-						</c:forEach>
-
-					</div>
-
-					<div class="col-md-6">
-
-						<div ng-controller="RecipesCtrl">
-
-							<br>
-							<input type="text" ng-model="search" placeholder="Search"
-								class="form-control" /><br /> <br>
-							<div class="plate_background">
-								<div class="recipe_list"
-									ng-repeat="data in filt = (recipes | filter:search) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
-									<a href="/recipe/{{data.id}}">{{data.name}}</a>
-								</div>
-							</div>
-
-							<pagination data-boundary-links="true"
-								total-items="numberOfItems" num-pages="noOfPages"
-								ng-model="currentPage" max-size="maxSize" class="paginationsm"
-								items-per-page="entryLimit" data-previous-text="&laquo;"
-								data-next-text="&raquo;"></pagination>
-						</div>
-					</div>
+				<div class="col-md-6">
+					<a href="/addRecipe">
+						<button type="button" class="btn btn-default">Add new
+							recipe</button>
+					</a>
 				</div>
+
 			</div>
 		</div>
 		<div class="col-md-2"></div>

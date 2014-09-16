@@ -15,7 +15,7 @@
 <body class="the_best_background">
 	<c:if test="${not empty error }">
 		<div class="erroBlock">
-			Your login was unsuccessful. <br /> Caused:
+			Your login was unsuccessful. <br> Caused:
 			${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message }
 		</div>
 	</c:if>

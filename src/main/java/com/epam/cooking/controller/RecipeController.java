@@ -31,7 +31,7 @@ import com.epam.cooking.json.SimpleRecipe;
 @Controller
 public class RecipeController {
 
-	private static final int NUMBER_OF_RECIPES_TO_DISPLAY = 4;
+	private static final int UNIT_PER_PRICE = 100;
 
 	private static final Logger LOGGER = LoggerFactory
 			.getLogger(RecipeController.class);
@@ -68,14 +68,6 @@ public class RecipeController {
 
 	@RequestMapping(value = "/recipes", method = RequestMethod.GET)
 	public String recipes(Locale locale, Model model) {
-		List<Recipe> recipes = recipeService.getRecipes();
-		int numOfRecipes = recipes.size();
-		if (numOfRecipes > NUMBER_OF_RECIPES_TO_DISPLAY) {
-			model.addAttribute("latestRecipes", recipes.subList(numOfRecipes
-					- NUMBER_OF_RECIPES_TO_DISPLAY, numOfRecipes));
-		} else {
-			model.addAttribute("latestRecipes", recipes);
-		}
 		return "recipes";
 	}
 
@@ -99,8 +91,8 @@ public class RecipeController {
 		Recipe recipe = recipeService.getRecipe(id);
 		int totalPrice = 0;
 		for (Component component : recipe.getComponents()) {
-			totalPrice += component.getAmount()
-					* component.getIngredientPrice();
+			totalPrice += (component.getAmount()
+					* component.getIngredientPrice()) / UNIT_PER_PRICE;
 		}
 
 		model.addAttribute("recipe", recipe);

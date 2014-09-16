@@ -30,7 +30,7 @@
 
 				<div
 					class="form-group ${not empty status.getFieldError('username') ? 'has-error has-feedback' : ''}">
-					<label class="col-sm-2 control-label">Name</label> <br><br>
+					<label class="col-sm-2 control-label">Name</label> <br>
 					<div class="col-sm-10">
 						<form:input path="username" type="text" class="form-control"
 							placeholder="Name" ng-model="input"/>
@@ -43,7 +43,7 @@
 				</div>
 				<div
 					class="form-group ${not empty status.getFieldError('password') ? 'has-error has-feedback' : ''}">
-					<label class="col-sm-2 control-label">Password</label> <br><br>
+					<label class="col-sm-2 control-label">Password</label> <br>
 					<div class="col-sm-10">
 						<form:input path="password" type="password" class="form-control"
 							placeholder="Password" />

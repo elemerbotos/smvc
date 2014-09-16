@@ -52,7 +52,6 @@
 				</div>
 			</div>
 			<div class="mainContent">
-				<br> <br> <br>
 				<form:form role="form" action="/addCategory" method="POST"
 					commandName="categoryForm">
 					<div class="form-group">
@@ -66,7 +65,7 @@
 
 					<div class="form-group">
 						<button type="submit" class="btn btn-default" value="Send">Send</button>
-						<br> <br> <br> <input action="action" type="button"
+						<input action="action" type="button"
 							onclick="history.go(-1);" value="Return to previous page"
 							class="btn btn-default" />
 					</div>
