@@ -21,19 +21,22 @@
 			</c:if>
 			
 			<c:if test="${error}">
-				<script type="text/javascript">alert("${errorMsg}");</script>
+				<script type="text/javascript">
+					var tempMsg = "${errorMsg}".replace("\r\n", "");
+					alert(tempMsg);
+				</script>
 			</c:if>
 			
 			<form:form class="form-horizontal"
 				role="form" action="register" method="post" commandName="userForm">
 				<form:errors path="*" cssClass="bg-danger" element="p" />
-
+				<br>
 				<div
 					class="form-group ${not empty status.getFieldError('username') ? 'has-error has-feedback' : ''}">
-					<label class="col-sm-2 control-label">Name</label> <br>
+					<label class="col-sm-2 control-label fix-sized-label" for="username">Name</label>
 					<div class="col-sm-10">
 						<form:input path="username" type="text" class="form-control"
-							placeholder="Name" ng-model="input"/>
+							placeholder="Name" ng-model="input" id="username"/>
 						<c:if test="${not empty status.getFieldError('username') }">
 							<span class="glyphicon glyphicon-remove form-control-feedback"></span>
 						</c:if>
@@ -41,17 +44,19 @@
 <!-- 						class="alert alert-danger" -->
 					</div>
 				</div>
+				<br>
 				<div
 					class="form-group ${not empty status.getFieldError('password') ? 'has-error has-feedback' : ''}">
-					<label class="col-sm-2 control-label">Password</label> <br>
+					<label class="col-sm-2 control-label fix-sized-label" for="password">Password</label>
 					<div class="col-sm-10">
 						<form:input path="password" type="password" class="form-control"
-							placeholder="Password" />
+							placeholder="Password" id="password"/>
 						<c:if test="${not empty status.getFieldError('password') }">
 							<span class="glyphicon glyphicon-remove form-control-feedback"></span>
 						</c:if>
 					</div>
 				</div>
+				<br>
 				<div class="form-group">
 					<div class="col-sm-10">
 						<button type="submit" class="btn btn-primary">Sign up</button>

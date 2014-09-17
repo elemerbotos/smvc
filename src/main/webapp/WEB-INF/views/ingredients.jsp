@@ -56,10 +56,13 @@
 							class="form-control" /><br>
 
 						<div class="search-result">
-							<accordion close-others="oneAtATime"> <accordion-group
+							<accordion close-others="oneAtATime"> 
+							<accordion-group
 								heading="{{data.name}}"
 								ng-repeat="data in changedIngredients = (ingredients | filter:search) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
-							{{data.description}} </accordion-group> </accordion>
+									{{data.description}} 
+							</accordion-group> 
+							</accordion>
 						</div>
 
 						<pagination data-boundary-links="true" total-items="numberOfItems"

@@ -71,7 +71,7 @@ public class UserController {
 		} catch (PersistenceException ex) {
 			model.addAttribute("error", true);
 			model.addAttribute("errorMsg",
-					"Already existing username!\n Please specify another!");
+					"Already existing username!\\\n Please specify another!");
 			return "register";
 		} catch (ConstraintViolationException ex) {
 			model.addAttribute("error", true);

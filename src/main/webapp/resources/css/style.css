@@ -90,3 +90,11 @@
 .ingredients-table {
 	margin-top: 30px;
 }
+
+.fix-sized-label {
+	min-width: 70px;
+}
+
+.panel a {
+	cursor: pointer;
+}

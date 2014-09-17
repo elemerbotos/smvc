@@ -13,13 +13,6 @@
 <link rel="stylesheet" href="/resources/css/style.css">
 </head>
 <body class="the_best_background">
-	<c:if test="${not empty error }">
-		<div class="erroBlock">
-			Your login was unsuccessful. <br> Caused:
-			${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message }
-		</div>
-	</c:if>
-
 	<c:if test="${successfullRegistration == true}">
 		<script>
 			alert("Succesfull registration!");
@@ -27,19 +20,25 @@
 	</c:if>
 
 	<div class="panel panel-default">
+		<c:if test="${not empty error }">
+		<div class="erroBlock">
+			Your login was unsuccessful. <br> Caused:
+			${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message }
+		</div>
+		</c:if>
 		<div class="panel-body max-width-30 center-with-auto-div">
 			<h1>Login</h1>
 			<form action="j_spring_security_check" name="f" method="post"
 				class="form-horizontal">
 				<div class="form-group">
-					<label for="user" class="col-sm-2 control-label">Username </label>
+					<label for="user" class="col-sm-2 control-label fix-sized-label">Username </label>
 					<div class="col-sm-10">
 						<input type="text" name="j_username" class="form-control"
 							id="user" placeholder="Enter username">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="passsword" class="col-sm-2 control-label">Password
+					<label for="passsword" class="col-sm-2 control-label fix-sized-label">Password
 					</label>
 					<div class="col-sm-10">
 						<input type="password" name="j_password" class="form-control"
