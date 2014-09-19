@@ -12,6 +12,7 @@ import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
+import org.json.JSONException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,22 +37,27 @@ public class RecipeController {
 	private static final Logger LOGGER = LoggerFactory
 			.getLogger(RecipeController.class);
 
-	private static final Mapper dozerMapper = new DozerBeanMapper();
+	private static final Mapper DOZER_MAPPER = new DozerBeanMapper();
 
 	@Autowired
 	private RecipesIngredientsService recipeService;
 
 	@RequestMapping(value = "/recipe/removeRecipe", method = RequestMethod.GET)
 	public String removeRecipe(@RequestParam("id") long id, Locale locale, Model model) {
-//		recipeService.deleteRecipe(id);
 		recipeService.removeIngredients(id);
 		LOGGER.info("Components of recipe id:" + id + " removed");
 		recipeService.removeRecipe(id);
 		LOGGER.info("Recipe with id:" + id + " removed");
 		return "redirect:/recipes";
-		
 	}
-	
+
+//	@RequestMapping(value = "/recipe/modifyRecipe", method = RequestMethod.GET)
+//	public String modifyRecipe(@RequestParam("id") long id, Locale locale, Model model) {
+//		
+//		return "redirect:/recipes";
+//		
+//	}
+
 	@RequestMapping(value = "/addRecipe", method = RequestMethod.GET)
 	public String addRecipe(@RequestParam(defaultValue = "false") boolean categoryAdded, Locale locale, Model model) {
 		model.addAttribute("categories", recipeService.getCategories());
@@ -63,7 +69,7 @@ public class RecipeController {
 	@RequestMapping(value = "/addNewRecipe", method = RequestMethod.POST)
 	@ResponseBody
 	public String addNewRecipe(@RequestParam("recipe") String recipeJson,
-			Model model) {
+			Model model) throws JSONException {
 		Recipe recipe = recipeService.createRecipeFromJson(recipeJson);
 		try {
 			recipeService.addNewRecipe(recipe);
@@ -82,14 +88,14 @@ public class RecipeController {
 		return "recipes";
 	}
 
-	@RequestMapping(value = "/recipesAJAX", method = RequestMethod.GET, produces = "application/json")
+	@RequestMapping(value = "/recipesAJAX", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public String recipesAJAX(Locale locale, Model model)
-			throws JsonGenerationException, JsonMappingException, IOException {
+			throws IOException {
 		List<Recipe> recipes = recipeService.getRecipes();
 		List<SimpleRecipe> simpleRecipes = new ArrayList<>();
 		for (Recipe recipe : recipes) {
-			simpleRecipes.add(dozerMapper.map(recipe, SimpleRecipe.class));
+			simpleRecipes.add(DOZER_MAPPER.map(recipe, SimpleRecipe.class));
 		}
 
 		ObjectMapper mapper = new ObjectMapper();

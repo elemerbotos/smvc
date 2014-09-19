@@ -3,7 +3,7 @@ package com.epam.cooking.json;
 
 public class SimpleUsername {
 	private String username;
-	
+
 	public String getUsername() {
 		return username;
 	}

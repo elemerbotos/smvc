@@ -17,7 +17,7 @@ public class JpaComponentDao extends GenericJpaDao implements ComponentDao {
 		entityManager.persist(component);
 		entityManager.flush();
 	}
-	
+
 	@Override
 	public void deleteComponentWhereRecipe(long id) {
 		String queryString = "DELETE FROM Component c WHERE c.recipe.id = :id";

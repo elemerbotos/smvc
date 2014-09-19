@@ -10,13 +10,13 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Category {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
-	@NotEmpty(message="Category name cannot be empty! ")
-	@Pattern(regexp="[^<>\"?]+", message="No SQL injection, please!")
+
+	@NotEmpty(message = "Category name cannot be empty! ")
+	@Pattern(regexp = "[^<>?]+", message = "No bad characters, please!")
 	private String name;
 
 	public Long getId() {
@@ -34,6 +34,5 @@ public class Category {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
+
 }

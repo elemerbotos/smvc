@@ -22,7 +22,7 @@
 			
 			<c:if test="${error}">
 				<script type="text/javascript">
-					var tempMsg = "${errorMsg}".replace("\r\n", "");
+					var tempMsg = "${errorMsg}";
 					alert(tempMsg);
 				</script>
 			</c:if>
@@ -59,7 +59,7 @@
 				<br>
 				<div class="form-group">
 					<div class="col-sm-10">
-						<button type="submit" class="btn btn-primary">Sign up</button>
+						<button type="submit" class="btn btn-primary" id="submit">Sign up</button>
 					</div>
 				</div>
 			</form:form>

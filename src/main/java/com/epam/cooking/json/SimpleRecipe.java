@@ -6,7 +6,7 @@ public class SimpleRecipe {
 	private String name;
 	private List<SimpleComponent> components;
 	private long id;
-	
+
 	public String getName() {
 		return name;
 	}

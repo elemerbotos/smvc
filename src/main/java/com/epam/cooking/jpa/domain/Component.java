@@ -5,28 +5,25 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import org.apache.activemq.filter.function.makeListFunction;
 
 @Entity
 @Table(name = "INGREDIENT_RECIPE")
 public class Component {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
-	@JoinColumn(name="INGREDIENT_ID")
+
+	@JoinColumn(name = "INGREDIENT_ID")
 	@ManyToOne
 	private Ingredient ingredient;
-	
-	@JoinColumn(name="RECIPE_ID")
+
+	@JoinColumn(name = "RECIPE_ID")
 	@ManyToOne
 	private Recipe recipe;
-	
+
 	private int amount;
 
 	public Ingredient getIngredient() {
@@ -36,7 +33,7 @@ public class Component {
 	public int getIngredientPrice() {
 		return ingredient.getPrice();
 	}
-	
+
 	public void setIngredient(Ingredient ingredients) {
 		this.ingredient = ingredients;
 	}
@@ -59,8 +56,8 @@ public class Component {
 
 	@Override
 	public String toString() {
-		return "Component [ingredient=" + ingredient.getName() + ", recipe=" + recipe.getName()
-				+ ", amount=" + amount + "]";
+		return "Component [ingredient=" + ingredient.getName() + ", recipe="
+				+ recipe.getName() + ", amount=" + amount + "]";
 	}
 
 	public String getIngredientName() {

@@ -11,7 +11,7 @@ public class SimpleIngredient {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(final Long id) {
 		this.id = id;
 	}
 
@@ -19,7 +19,7 @@ public class SimpleIngredient {
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(final String name) {
 		this.name = name;
 	}
 
@@ -27,7 +27,7 @@ public class SimpleIngredient {
 		return description;
 	}
 
-	public void setDescription(String description) {
+	public void setDescription(final String description) {
 		this.description = description;
 	}
 
@@ -35,7 +35,7 @@ public class SimpleIngredient {
 		return price;
 	}
 
-	public void setPrice(Integer price) {
+	public void setPrice(final Integer price) {
 		this.price = price;
 	}
 
@@ -43,9 +43,9 @@ public class SimpleIngredient {
 		return author;
 	}
 
-	public void setAuthor(String author) {
+	public void setAuthor(final String author) {
 		this.author = author;
 	}
-	
-	
+
+
 }

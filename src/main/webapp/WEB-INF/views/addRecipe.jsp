@@ -24,7 +24,7 @@
 
 	<c:if test="${categoryAdded}">
 		<script type="text/javascript">
-			alert("Category successfuly added!");
+			alert("Category successfully added!");
 		</script>
 	</c:if>
 	<div class="row">
@@ -77,7 +77,7 @@
 						<label for="desc">Description</label>
 						<textarea ng-model="desc" rows="10" cols="50" name="description"
 							id="desc" class="form-control"
-							placeholder="Enter the text of recipe"></textarea>
+							placeholder="Enter the text of recipe" ></textarea>
 					</div>
 
 					<div class="form-group">
@@ -90,13 +90,12 @@
 						</select>
 					</div>
 
-					<!-- 				<label for="addIngreds">Add ingredients</label> -->
 					<div class="form-group row" id="addIngreds">
 						<div class="form-group col-md-4">
 							<label for="ingred">Ingredient name</label> <select
 								ng-model="ingredient" name="ingredients" id="ingred"
 								class="form-control">
-								<option selected disabled value="">Choose an ingredient</option>
+								<option selected disabled value="">Choose an ingredient<option>
 								<c:forEach var="ingred" items="${ingredients}">
 									<option value="id:${ingred.id}, name:${ingred.name}">${ingred.name}</option>
 								</c:forEach>
@@ -112,7 +111,7 @@
 						<div class="col-md-4">
 							<label for="addToListButton">&nbsp;</label><input type="button"
 								value="Add to list" ng-click="addToList(ingredient, quantity)"
-								class="btn btn-default top-margin-50" id="addToListButton" /> 
+								class="btn btn-default top-margin-50" id="addToListButton"/> 
 							
 							
 							

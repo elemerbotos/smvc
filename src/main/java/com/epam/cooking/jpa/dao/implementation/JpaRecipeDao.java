@@ -3,10 +3,9 @@ package com.epam.cooking.jpa.dao.implementation;
 import java.util.List;
 
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.TransactionStatus;
-import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import com.epam.cooking.jpa.dao.RecipeDao;
 import com.epam.cooking.jpa.domain.Recipe;
@@ -25,15 +24,14 @@ public class JpaRecipeDao extends GenericJpaDao implements RecipeDao {
 		return entityManager.find(Recipe.class, id);
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<Recipe> getRecipes() {
 		String queryString = "SELECT r FROM Recipe r";
-		Query query = entityManager.createQuery(queryString);
+		TypedQuery<Recipe> query = entityManager.createQuery(queryString, Recipe.class);
 
 		return query.getResultList();
 	}
-	
+
 	@Override
 	public void deleteRecipeBy(long id) {
 		String queryString = "DELETE FROM Recipe r WHERE r.id = :id";

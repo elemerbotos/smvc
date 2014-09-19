@@ -1,8 +1,10 @@
 package com.epam.cooking.jpa.dao.implementation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 
@@ -21,11 +23,10 @@ public class JpaCategoryDao extends GenericJpaDao implements CategoryDao {
 		return (Category) query.getSingleResult();
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<Category> getCategories() {
 		String queryString = "SELECT c FROM Category c";
-		Query query = entityManager.createQuery(queryString);
+		TypedQuery<Category> query = entityManager.createQuery(queryString, Category.class);
 
 		return query.getResultList();
 	}

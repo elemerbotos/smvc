@@ -6,6 +6,10 @@
 	text-align: center;
 }
 
+.menu-items-center a:hover {
+	text-decoration: none;
+}
+
 #align-right {
 	text-align: right;
 	float: right;
@@ -55,10 +59,10 @@
 .the_best_background {
 	background-image: url('/resources/img/bg.jpg');
 	background-repeat: no-repeat;
-	/* 	background-size: cover; */
 	background-position: fixed fixed;
 	background-attachment: fixed;
 	background-size: contain;
+	overflow-x:hidden;
 }
 
 .page-header {

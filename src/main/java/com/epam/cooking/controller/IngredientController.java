@@ -1,7 +1,6 @@
 package com.epam.cooking.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -10,8 +9,6 @@ import javax.validation.Valid;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.dozer.DozerBeanMapper;
-import org.dozer.Mapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,17 +22,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.epam.cooking.jpa.domain.Ingredient;
-import com.epam.cooking.jpa.domain.User;
 import com.epam.cooking.jpa.service.RecipesIngredientsService;
-import com.epam.cooking.json.SimpleUser;
 
 @Controller
 public class IngredientController {
 
 	private static final Logger LOGGER = LoggerFactory
 			.getLogger(IngredientController.class);
-
-	private static final Mapper dozerMapper = new DozerBeanMapper();
 
 	@Autowired
 	private RecipesIngredientsService recipeService;
@@ -48,10 +41,10 @@ public class IngredientController {
 		return "ingredients";
 	}
 
-	@RequestMapping(value = "/ingredientsAJAX", method = RequestMethod.GET, produces = "application/json")
+	@RequestMapping(value = "/ingredientsAJAX", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public String ingredientsAJAX(Locale locale, Model model)
-			throws JsonGenerationException, JsonMappingException, IOException {
+			throws IOException {
 		List<Ingredient> ingredients = recipeService.getIngredients();
 		ObjectMapper mapper = new ObjectMapper();
 		return mapper.writeValueAsString(ingredients);

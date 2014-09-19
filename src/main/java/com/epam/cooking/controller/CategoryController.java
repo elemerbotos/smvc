@@ -23,18 +23,18 @@ public class CategoryController {
 
 	private static final Logger LOGGER = LoggerFactory
 			.getLogger(CategoryController.class);
-	
+
 	@RequestMapping(value = "/addCategory", method = RequestMethod.GET)
 	public String addCategory(Locale locale, Model model) {
 		model.addAttribute("categoryForm", new Category());
 
 		return "addCategory";
 	}
-	
+
 	@RequestMapping(value = "/addCategory", method = RequestMethod.POST)
 	public String addNewCategory(@ModelAttribute("categoryForm") @Valid Category category, Locale locale, Model model) {
 		String result = "redirect:/addRecipe?categoryAdded=true";
-		if(recipeService.hasCategory(category)) {
+		if (recipeService.hasCategory(category)) {
 			model.addAttribute("error", true);
 			result = "addCategory";
 		} else {

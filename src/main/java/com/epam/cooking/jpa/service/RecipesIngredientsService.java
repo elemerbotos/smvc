@@ -5,11 +5,9 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.persistence.NoResultException;
 
-import org.hibernate.validator.constraints.Email;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -17,7 +15,6 @@ import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
-import com.epam.cooking.controller.LoginController;
 import com.epam.cooking.jpa.dao.CategoryDao;
 import com.epam.cooking.jpa.dao.ComponentDao;
 import com.epam.cooking.jpa.dao.IngredientDao;
@@ -41,7 +38,7 @@ public class RecipesIngredientsService {
 	private CategoryDao categoryDao;
 	@Autowired
 	private ComponentDao componentDao;
-	
+
 	@Resource
 	protected PlatformTransactionManager txManager;
 
@@ -58,7 +55,7 @@ public class RecipesIngredientsService {
 		return recipeDao.getRecipes();
 	}
 
-	public Recipe createRecipeFromJson(String json) {
+	public Recipe createRecipeFromJson(String json) throws JSONException {
 		Recipe recipe = new Recipe();
 		JSONObject obj = new JSONObject(json);
 		recipe.setName(obj.getString("name"));
@@ -118,21 +115,23 @@ public class RecipesIngredientsService {
 		}
 		return result;
 	}
-	
+
 	@Transactional
 	public void removeRecipe(long id) {
-		TransactionStatus status = txManager.getTransaction(new DefaultTransactionDefinition());
+		TransactionStatus status = txManager
+				.getTransaction(new DefaultTransactionDefinition());
 		recipeDao.deleteRecipeBy(id);
 		txManager.commit(status);
 	}
-	
+
 	@Transactional
 	public void removeIngredients(long id) {
-		TransactionStatus status = txManager.getTransaction(new DefaultTransactionDefinition());
+		TransactionStatus status = txManager
+				.getTransaction(new DefaultTransactionDefinition());
 		componentDao.deleteComponentWhereRecipe(id);
 		txManager.commit(status);
 	}
-	
+
 	public void deleteRecipe(long id) {
 		removeIngredients(id);
 		removeRecipe(id);

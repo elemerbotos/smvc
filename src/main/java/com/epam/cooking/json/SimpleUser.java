@@ -5,7 +5,7 @@ import java.util.List;
 public class SimpleUser {
 	private String username;
 	private List<SimpleRecipe> recipes;
-	
+
 	public String getUsername() {
 		return username;
 	}

@@ -50,10 +50,17 @@
 
 				<div class="modal-header">
 					<h3 class="modal-title">${recipe.name}</h3>
+					<sec:authentication var="principal" property="principal" />
 					<sec:authorize access="hasRole('ROLE_ADMIN')">
 						<a href="removeRecipe?id=${recipe.id}"
 							class="btn btn-default float-right">Remove recipe</a>
 					</sec:authorize>
+					<c:if test="${recipe.author.username eq principal.username}">
+						<a href="removeRecipe?id=${recipe.id}"
+							class="btn btn-default float-right">Remove recipe</a> 
+						<a href="modifyRecipe?id=${recipe.id}"
+							class="btn btn-default float-right">Remove recipe</a>
+					</c:if>
 				</div>
 				<div class="modal-body">
 					<h4>Category:</h4>

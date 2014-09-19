@@ -16,21 +16,17 @@ import javax.validation.constraints.Pattern;
 public class User {
 
 	@Id
-	@Pattern(regexp="[^<>\"?]+", message="No SQL injection, please!")
+	@Pattern(regexp = "[^<>?]+", message = "No bad characters, please!")
 	private String username;
-	
-	@Pattern(regexp="[\\w.?,]+", message="Wrong password")
+
+	@Pattern(regexp = "[\\w.?,]+", message = "Wrong password")
 	private String password;
 	private boolean enabled;
-	
-	@OneToMany(
-			fetch=FetchType.EAGER, 
-			mappedBy="user", 
-			cascade=CascadeType.PERSIST
-			)
+
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.PERSIST)
 	private Set<Authorities> authorities = new HashSet<>();
 
-	@OneToMany(mappedBy="author", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy = "author", fetch = FetchType.EAGER)
 	private Set<Recipe> recipes = new HashSet<Recipe>();
 
 	public String getUsername() {
@@ -72,7 +68,7 @@ public class User {
 
 	public void setAuthority(Authorities authority) {
 		this.authorities.add(authority);
-		
+
 	}
 
 	public Set<Authorities> getAuthorities() {

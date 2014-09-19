@@ -14,7 +14,7 @@ import com.epam.cooking.jpa.service.RecipesIngredientsService;
 
 @Controller
 public class HomeController {
-	
+
 	private static final int NUMBER_OF_RECIPES_TO_DISPLAY = 4;
 
 	@Autowired
@@ -32,5 +32,5 @@ public class HomeController {
 		}
 		return "home";
 	}
-	
+
 }

@@ -25,7 +25,6 @@ var registrationCtrl = registrationApp.controller('registrationCtrl',
 												msg : 'Already existing username!'
 											});
 								}
-								;
 							} else {
 								$scope.alerts = [];
 							}

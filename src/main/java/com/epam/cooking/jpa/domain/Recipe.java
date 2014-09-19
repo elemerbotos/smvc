@@ -16,32 +16,31 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 @Entity
-@Table(name="recipe")
+@Table(name = "recipe")
 public class Recipe {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	@Pattern(regexp="[^<>\"]+", message="No SQL injection, please!")
+
+	@Pattern(regexp = "[^<>]+", message = "No bad characters, please!")
 	private String name;
-	@Pattern(regexp="[^<>\"?]+", message="No SQL injection, please!")
+
+	@Pattern(regexp = "[^<>?]+", message = "No bad characters, please!")
 	private String description;
-	
+
 	@ManyToOne
-    @JoinColumn(name="author_id")
+	@JoinColumn(name = "author_id")
 	private User author;
-	
-	@OneToMany(cascade=CascadeType.PERSIST, mappedBy="recipe", fetch=FetchType.EAGER)
+
+	@OneToMany(cascade = CascadeType.PERSIST, mappedBy = "recipe", fetch = FetchType.EAGER)
 	private List<Component> components = new ArrayList<Component>();
-	
+
 	@ManyToOne
-	@JoinColumn(name="CATEGORY_ID")
+	@JoinColumn(name = "CATEGORY_ID")
 	private Category category;
-	
+
 	private Date creation;
 
 	public Long getId() {
@@ -75,11 +74,11 @@ public class Recipe {
 	public void setAuthor(User author) {
 		this.author = author;
 	}
-	
+
 	public List<Component> getComponents() {
 		return components;
 	}
-	
+
 	public void addIngredient(Ingredient ingredient, Integer amount) {
 		Component component = new Component();
 		component.setAmount(amount);
@@ -101,17 +100,17 @@ public class Recipe {
 	}
 
 	public void setCategory(Category category) {
-		this.category = category; 
-		
+		this.category = category;
 	}
-	
+
 	public Category getCategory() {
 		return category;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Recipe [id=" + id + ", name=" + name + ", description="
-				+ description + ", author=" + author.getUsername() +  ", category=" + category + ", components=" + components + "]";
+				+ description + ", author=" + author.getUsername()
+				+ ", category=" + category + ", components=" + components + "]";
 	}
 }

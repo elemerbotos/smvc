@@ -43,7 +43,7 @@ public class UserController {
 	private static final Logger LOGGER = LoggerFactory
 			.getLogger(UserController.class);
 
-	private static final Mapper dozerMapper = new DozerBeanMapper();
+	private static final Mapper DOZER_MAPPER = new DozerBeanMapper();
 
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
 	public String users(Locale locale, Model model) {
@@ -76,21 +76,21 @@ public class UserController {
 		} catch (ConstraintViolationException ex) {
 			model.addAttribute("error", true);
 			model.addAttribute("errorMsg",
-					"Password can only contain a-Z, 0-9, _, ?, ");
+					"Password and username can only contain a-Z, 0-9, _, ? !");
 			return "register";
 		}
 		return "redirect:/login?successfullRegistration=true";
 	}
 
-	@RequestMapping(value = "/userNamesAJAX", method = RequestMethod.GET, produces = "application/json")
+	@RequestMapping(value = "/userNamesAJAX", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public String usersNamesAJAX(Locale locale, Model model)
-			throws JsonGenerationException, JsonMappingException, IOException {
+			throws IOException {
 		List<User> users = recipeService.getUsers();
 		List<SimpleUsername> simpleUsernames = new ArrayList<>();
 		for (User user : users) {
 
-			simpleUsernames.add(dozerMapper.map(user, SimpleUsername.class));
+			simpleUsernames.add(DOZER_MAPPER.map(user, SimpleUsername.class));
 		}
 
 		ObjectMapper mapper = new ObjectMapper();
@@ -100,15 +100,15 @@ public class UserController {
 		return result;
 	}
 	
-	@RequestMapping(value = "/usersAJAX", method = RequestMethod.GET, produces = "application/json")
+	@RequestMapping(value = "/usersAJAX", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public String usersAJAX(Locale locale, Model model)
-			throws JsonGenerationException, JsonMappingException, IOException {
+			throws IOException {
 		List<User> users = recipeService.getUsers();
 		List<SimpleUser> simpleUsers = new ArrayList<>();
 		for (User user : users) {
 			if (!specialUser(user)) {
-				simpleUsers.add(dozerMapper.map(user, SimpleUser.class));
+				simpleUsers.add(DOZER_MAPPER.map(user, SimpleUser.class));
 			}
 		}
 

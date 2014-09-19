@@ -34,7 +34,7 @@
 					<label for="user" class="col-sm-2 control-label fix-sized-label">Username </label>
 					<div class="col-sm-10">
 						<input type="text" name="j_username" class="form-control"
-							id="user" placeholder="Enter username">
+							id="username" placeholder="Enter username">
 					</div>
 				</div>
 				<div class="form-group">
@@ -56,16 +56,15 @@
 				</div>
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
-						<button type="submit" name="Submit" class="btn btn-default">Sign
+						<button type="submit" name="Submit" id="submit" class="btn btn-default">Sign
 							in</button>
 					</div>
 				</div>
-				Don't have an account yet? <a href="/register">register</a>!
+				Don't have an account yet? <a href="/register" id="register">register</a>!
 
 			</form>
 		</div>
 	</div>
-
 
 </body>
 </html>
